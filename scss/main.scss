@@ -15,3 +15,22 @@ main{
     bottom: 0;
     width: 100%;
   }
+  .logo img {
+    height: 150px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    
+    }
+    .lion-scene{
+      position: relative;
+
+      background-image: url(../node_modules/images/LionScene.jpg);
+      background-size: cover;
+      height: 550px;
+      display: flex;
+      align-content: center;
+      flex-direction: column-reverse;
+      align-items: stretch;
+      justify-content: flex-end;
+  }
+    
