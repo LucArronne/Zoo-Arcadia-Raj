@@ -11992,10 +11992,92 @@ footer.footer {
   position: relative;
   background-image: url(../node_modules/images/LionScene.jpg);
   background-size: cover;
-  height: 550px;
+  height: 700px;
   display: flex;
   align-content: center;
   flex-direction: column-reverse;
   align-items: stretch;
   justify-content: flex-end;
+}
+
+/* Liste des Habitats */
+.habitats {
+  padding: 40px 20px;
+  background-color: #A3D6DB;
+}
+
+.habitat-title p {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #2E7D32;
+}
+
+.habitat-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.habitat-card {
+  flex: 1 1 calc(33.333% - 40px); /* Largeur de chaque carte: 1/3 avec l'espace (20px de chaque côté) */
+  max-width: 350px; /* Augmente la largeur maximale des cartes */
+  min-width: 250px;
+  text-align: center;
+  border: 1px solid #fdfdfd;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: rgb(255, 255, 255);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.habitat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.habitat-card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.habitat-card h3, .habitat-card .h3 {
+  margin: 20px 0;
+  color: #2AB458;
+}
+
+.habitat-card .btn {
+  background-color: #2e7d32;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.habitat-card .btn:hover {
+  background-color: #2e7d32;
+}
+
+p {
+  color: #ffffff;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+body, footer {
+  max-width: 98%;
+  margin: 0 auto;
+  background-color: #ebebeb;
+  border-radius: 5px;
+}
+
+.presentation img {
+  width: 100%;
+  max-height: auto;
+  width: 100px;
+  border-radius: 10px;
+  margin-bottom: 10px;
 }/*# sourceMappingURL=main.css.map */
