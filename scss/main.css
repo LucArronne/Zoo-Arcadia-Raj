@@ -11983,9 +11983,9 @@ footer.footer {
 }
 
 .logo img {
-  height: 150px;
+  height: 130px;
   background-color: #ffffff;
-  border-radius: 10px;
+  border-radius: 30px;
 }
 
 .lion-scene {
@@ -11997,7 +11997,7 @@ footer.footer {
   align-content: center;
   flex-direction: column-reverse;
   align-items: stretch;
-  justify-content: flex-end;
+  justify-content: center;
 }
 
 /* Liste des Habitats */
@@ -12068,10 +12068,15 @@ p {
 }
 
 body, footer {
-  max-width: 98%;
+  max-width: 100%;
   margin: 0 auto;
-  background-color: #ffffff;
+  background-color: #a9dff5;
+  opacity: 70;
   border-radius: 5px;
+}
+
+.text-justify {
+  text-align: justify;
 }
 
 .presentation img {
