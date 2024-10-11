@@ -11975,16 +11975,17 @@ main {
   margin-bottom: 250px;
 }
 
-footer.footer {
-  padding: 15px;
+.footer {
   position: absolute;
   bottom: 0;
+  left: 0;
+  right: 0;
   width: 100%;
 }
 
 .logo img {
   height: 130px;
-  background-color: #ffffff;
+  background-image: #ffffff;
   border-radius: 30px;
 }
 
@@ -12000,10 +12001,48 @@ footer.footer {
   justify-content: center;
 }
 
+body {
+  max-width: 100%;
+  margin: 0 auto;
+  background-image: url(../node_modules/images/beautiful-detailed-macro-leaf.jpg);
+  background-size: 100%;
+  border-radius: 5px;
+}
+
+/* Ajout overlay */
+.background-section {
+  position: relative;
+  background-image: url("../node_modules/images/ton_image_de_fond.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay-text-container {
+  position: relative;
+  padding: 20px; /* Espace autour du texte */
+  z-index: 1; /* Le texte au-dessus de l'overlay */
+}
+
+.overlay-text-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(1, 182, 26, 0.5); /* Overlay semi-transparent */
+  z-index: -1; /* L'overlay derrière le texte */
+  border-radius: 10px; /* Optionnel, arrondir les coins de l'overlay */
+}
+
 /* Liste des Habitats */
 .habitats {
   padding: 40px 20px;
-  background-color: #A3D6DB;
+  background-color: #ffffff;
 }
 
 .habitat-title p {
@@ -12067,14 +12106,6 @@ p {
   margin-bottom: 20px;
 }
 
-body, footer {
-  max-width: 100%;
-  margin: 0 auto;
-  background-color: #a9dff5;
-  opacity: 70;
-  border-radius: 5px;
-}
-
 .text-justify {
   text-align: justify;
 }
@@ -12099,4 +12130,6 @@ body, footer {
   /* align-content: center; */
   flex-wrap: wrap;
   /* flex-direction: row-reverse; */
-}/*# sourceMappingURL=main.css.map */
+}
+
+/* Services *//*# sourceMappingURL=main.css.map */

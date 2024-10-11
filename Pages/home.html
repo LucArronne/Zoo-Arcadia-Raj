@@ -12,7 +12,9 @@
     <article>
         <div class="container">
             <div class="habitat-title">
-                <h2 class="text-center text-primary">Nos Habitats</h2>
+                <div class="overlay-text-container">
+                    <h2 class="text-center text-white">Nos Habitats</h2>
+                </div>
                 <p>Le Zoo Arcadia est composé de plusieurs habitats naturels pour accueillir des animaux de
                     différentes espèces</p>
             </div>
@@ -62,29 +64,30 @@
     </article>
     <article>
         <div class="container p-4">
-            <div class="presentation">
+            <div class="overlay-text-container">
                 <h2 class="text-center text-white">Nos Services</h2>
-                <div class="col">
-
-                </div>
-                <div class="row row-cols-2 align-items-center">
-                    <div class="col">
-                        <img class="w-100 rounded " src="../node_modules/images/front-view-woman-living-farmhouse.jpg">
-                    </div>
-
-                    <div class="col">
-                        <p class="text-primary">
-                            Explorez les differents services offerts par le zoo
-                        </p>
-                    </div>
-
-
-
-                </div>
-                <div class="text-center pt-4">
-                    <a href="/service" class="btn btn-primary">Voir les Services</a>
-                </div>
             </div>
+            <div class="col">
+
+            </div>
+            <div class="row row-cols-2 align-items-center">
+                <div class="col">
+                    <img class="w-100 rounded " src="../node_modules/images/front-view-woman-living-farmhouse.jpg">
+                </div>
+
+                <div class="col">
+                    <p class="text-white">
+                        Explorez les differents services offerts par le zoo
+                    </p>
+                </div>
+
+
+
+            </div>
+            <div class="text-center pt-4">
+                <a href="/service" class="btn btn-primary">Voir les Services</a>
+            </div>
+        </div>
 
         </div>
     </article>
@@ -127,10 +130,13 @@
 
     <!-- Section Avis -->
 
-    <footer>
+    <section>
 
         <section class="avis container my-5">
-            <h2 class="text-center mb-4">Avis de Nos Visiteurs</h2>
+            <div class="overlay-text-container">
+                <h2 class="text-center text-white">Avis de nos Visiteurs</h2>
+            </div>
+
 
             <div class="row">
                 <!-- Avis 1 -->
@@ -141,6 +147,7 @@
                             <p class="card-text text-primary">"Une expérience formidable ! Le zoo est magnifique et
                                 l'engagement
                                 écologique est palpable."</p>
+
                         </div>
                     </div>
                 </div>
@@ -160,4 +167,3 @@
         </section>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    </footer>
