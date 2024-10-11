@@ -12004,7 +12004,7 @@ main {
 body {
   max-width: 100%;
   margin: 0 auto;
-  background-image: url(../node_modules/images/beautiful-detailed-macro-leaf.jpg);
+  background-image: url(../node_modules/images/texture-detail-nature-drop-closeup.jpg);
   background-size: 100%;
   border-radius: 5px;
 }
@@ -12012,7 +12012,6 @@ body {
 /* Ajout overlay */
 .background-section {
   position: relative;
-  background-image: url("../node_modules/images/ton_image_de_fond.jpg");
   background-size: cover;
   background-position: center;
   height: 100vh;
