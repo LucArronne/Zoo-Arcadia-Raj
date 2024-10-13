@@ -11966,20 +11966,20 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-html {
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+#main-page {
+  min-height: calc(100vh - 160px); /* Ajuste selon la hauteur du header et du footer */
+}
+
+footer {
   position: relative;
-  min-height: 100%;
-}
-
-main {
-  margin-bottom: 250px;
-}
-
-.footer {
-  position: absolute;
   bottom: 0;
-  left: 0;
   width: 100%;
+  z-index: 1000;
 }
 
 .logo img {
@@ -12037,7 +12037,7 @@ body {
   border-radius: 10px; /* Optionnel, arrondir les coins de l'overlay */
 }
 
-/* Liste des Habitats Home*/
+/* Liste des Habitats Home & habitats*/
 .habitats {
   padding: 40px 20px;
   background-color: #ffffff;
