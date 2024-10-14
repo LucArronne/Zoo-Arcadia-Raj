@@ -11969,6 +11969,7 @@ textarea.form-control-lg {
 html, body {
   height: 100%;
   margin: 0;
+  width: 100%;
 }
 
 #main-page {
@@ -11990,13 +11991,27 @@ footer {
 
 .lion-scene {
   position: relative;
+}
+.lion-scene::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background-image: url(../node_modules/images/LionScene.jpg);
   background-size: cover;
-  height: 700px;
+  filter: brightness(0.8);
+}
+.lion-scene * {
+  position: relative;
+}
+.lion-scene .lion-scene-content {
+  height: 800px;
+  min-height: 700px;
   display: flex;
-  align-content: center;
-  flex-direction: column-reverse;
-  align-items: stretch;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
 }
 
@@ -12004,8 +12019,9 @@ body {
   max-width: 100%;
   margin: 0 auto;
   background-image: url(../node_modules/images/texture-detail-nature-drop-closeup.jpg);
-  background-size: 100%;
-  border-radius: 5px;
+  background-size: auto;
+  max-width: 98%;
+  image-resolution: auto;
 }
 
 /* Ajout overlay */
@@ -12195,4 +12211,16 @@ p {
   color: #2e7d32;
   font-size: 1.2rem;
   margin-bottom: 20px;
+}
+
+/* Styles pour les petits écrans */
+@media (max-width: 768px) {
+  .habitat-card {
+    flex: 0 1 calc(50% - 1rem); /* Deux cartes par ligne sur mobile */
+  }
+}
+@media (max-width: 576px) {
+  .habitat-card {
+    flex: 0 1 100%; /* Une carte par ligne sur les très petits écrans */
+  }
 }/*# sourceMappingURL=main.css.map */

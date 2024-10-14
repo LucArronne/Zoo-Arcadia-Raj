@@ -8,7 +8,8 @@ export const allRoutes = [
     new Route("/habitat-savane", "habitat-savane", "/pages/habitat-savane.html"),
     new Route("/habitat-jungle", "habitat-jungle", "/pages/habitat-jungle.html"),
     new Route("/habitat-marais", "habitat-marais", "/pages/habitat-marais.html"),
-    new Route("/Restauration", "restauration", "/pages/restauration.html"),
+    new Route("/restauration", "restauration", "/pages/restauration.html"),
+
 ];
 
 //Le titre s'affiche comme ceci : Route.titre - websitename
