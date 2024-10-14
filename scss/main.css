@@ -12075,7 +12075,7 @@ body {
 
 .habitat-card img {
   max-width: 100%;
-  height: auto;
+  height: 500px;
   border-radius: 10px;
   margin-bottom: 10px;
 }
