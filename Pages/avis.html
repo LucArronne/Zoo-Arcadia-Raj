@@ -1,0 +1,30 @@
+<div class="container my-5">
+    <h2 class="text-center text-white">Laissez un Avis</h2>
+    <form>
+        <div class="mb-3">
+            <label for="name" class="form-label text-white">Nom</label>
+            <input type="text" class="form-control" id="name" placeholder="Votre nom" required>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label text-white">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="Votre email" required>
+        </div>
+        <div class="mb-3">
+            <label for="rating" class="form-label text-white">Note</label>
+            <select class="form-select" id="rating" required>
+                <option value="" disabled selected>Sélectionnez une note</option>
+                <option value="1">1 étoile</option>
+                <option value="2">2 étoiles</option>
+                <option value="3">3 étoiles</option>
+                <option value="4">4 étoiles</option>
+                <option value="5">5 étoiles</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="comment" class="form-label text-white">Commentaire</label>
+            <textarea class="form-control" id="comment" rows="4" placeholder="Votre avis" required></textarea>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary ">Soumettre</button>
+    </form>
+</div>

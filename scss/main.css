@@ -11967,9 +11967,17 @@ textarea.form-control-lg {
   }
 }
 html, body {
-  height: 100%;
   margin: 0;
   width: 100%;
+}
+
+body {
+  max-width: 90%;
+  margin: 0 auto;
+  background-image: url(../node_modules/images/texture-detail-nature-drop-closeup.jpg);
+  background-size: auto;
+  max-width: 98%;
+  image-resolution: from-image;
 }
 
 #main-page {
@@ -11984,13 +11992,15 @@ footer {
 }
 
 .logo img {
-  height: 130px;
+  height: 150px;
   background-image: #ffffff;
   border-radius: 30px;
+  margin-left: 10px;
 }
 
 .lion-scene {
   position: relative;
+  margin-bottom: 15px;
 }
 .lion-scene::before {
   content: "";
@@ -12002,26 +12012,18 @@ footer {
   background-image: url(../node_modules/images/LionScene.jpg);
   background-size: cover;
   filter: brightness(0.8);
+  border-radius: 0%;
 }
 .lion-scene * {
   position: relative;
 }
 .lion-scene .lion-scene-content {
-  height: 900px;
-  min-height: 500px;
+  height: 500px;
+  min-width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-body {
-  max-width: 100%;
-  margin: 0 auto;
-  background-image: url(../node_modules/images/texture-detail-nature-drop-closeup.jpg);
-  background-size: auto;
-  max-width: 98%;
-  image-resolution: auto;
 }
 
 /* Ajout overlay */
@@ -12213,14 +12215,14 @@ p {
   margin-bottom: 20px;
 }
 
-/* Styles pour les petits écrans */
-@media (max-width: 768px) {
-  .habitat-card {
-    flex: 0 1 calc(50% - 1rem); /* Deux cartes par ligne sur mobile */
-  }
+.form-label {
+  color: white;
 }
-@media (max-width: 576px) {
-  .habitat-card {
-    flex: 0 1 100%; /* Une carte par ligne sur les très petits écrans */
+
+@media (max-width: 768px) {
+  header nav ul li a {
+    padding: 20px; /* Réduire le padding pour les petits écrans */
+    font-size: 14px; /* Diminuer la taille du texte */
+    border-radius: 15px; /* Adapter le border-radius */
   }
 }/*# sourceMappingURL=main.css.map */
