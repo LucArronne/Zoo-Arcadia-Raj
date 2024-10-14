@@ -10,6 +10,7 @@ export const allRoutes = [
     new Route("/habitat-marais", "habitat-marais", "/pages/habitat-marais.html"),
     new Route("/restauration", "restauration", "/pages/restauration.html"),
     new Route("/petit-train", "petit-train", "/pages/petit-train.html"),
+    new Route("/guide", "guide", "/pages/guide.html"),
 
 ];
 

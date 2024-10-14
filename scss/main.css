@@ -12007,8 +12007,8 @@ footer {
   position: relative;
 }
 .lion-scene .lion-scene-content {
-  height: 800px;
-  min-height: 700px;
+  height: 900px;
+  min-height: 500px;
   display: flex;
   flex-direction: column;
   align-items: center;
