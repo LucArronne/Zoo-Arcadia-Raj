@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Statistiques des Animaux</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h2>Dashboard - Statistiques des Animaux</h2>
+
+        <div class="mb-4">
+            <label for="filterAnimal">Filtrer par Animal :</label>
+            <select class="form-control" id="filterAnimal">
+                <option value="all">Tous les Animaux</option>
+                <option value="lion">Lion</option>
+                <option value="tigre">Zebre</option>
+                <option value="ours">Girafe</option>
+                <option value="lion">Jaguar</option>
+                <option value="tigre">Orang-outan</option>
+                <option value="ours">tigre</option>
+                <option value="lion">Loutre</option>
+                <option value="tigre">Pelican</option>
+                <option value="ours">Crocodile</option>
+                <!-- Ajouter d'autres animaux ici -->
+            </select>
+        </div>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Animal</th>
+                    <th>Nombre de Consultations</th>
+                </tr>
+            </thead>
+            <tbody id="statisticsTable">
+                <tr>
+                    <td>Lion</td>
+                    <td>150</td>
+                </tr>
+                <tr>
+                    <td>Tigre</td>
+                    <td>120</td>
+                </tr>
+                <tr>
+                    <td>Ours</td>
+                    <td>90</td>
+                </tr>
+                <!-- Ajouter d'autres lignes ici -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Exemple de gestion du filtrage
+        $('#filterAnimal').on('change', function () {
+            const selectedAnimal = $(this).val();
+            $('#statisticsTable tr').show(); // Réinitialiser l'affichage
+
+            if (selectedAnimal !== 'all') {
+                $('#statisticsTable tr').each(function () {
+                    const animalName = $(this).find('td').first().text().toLowerCase();
+                    if (animalName !== selectedAnimal) {
+                        $(this).hide(); // Masquer les lignes qui ne correspondent pas
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

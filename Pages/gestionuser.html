@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Utilisateurs</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h2>Gestion des utilisateurs</h2>
+        <!-- Bouton pour ouvrir la modale d'ajout -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#userModal">
+            Ajouter un utilisateur
+        </button>
+
+        <!-- Tableau des utilisateurs existants -->
+        <table class="table mt-3">
+            <thead>
+                <tr>
+                    <th>Nom d'utilisateur</th>
+                    <th>Rôle</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Exemple d'utilisateur -->
+                <tr>
+                    <td>example@zooarcadia.com</td>
+                    <td>Vétérinaire</td>
+                    <td>
+                        <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal"
+                            data-username="example@zooarcadia.com">
+                            Supprimer
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modale pour le formulaire d'ajout/modification d'utilisateur -->
+    <div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="userModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="userModalLabel">Ajouter/Modifier Utilisateur</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="userForm">
+                        <div class="form-group">
+                            <label for="username">Nom d'utilisateur</label>
+                            <input type="text" class="form-control" id="username"
+                                placeholder="Entrez le nom d'utilisateur" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Mot de passe</label>
+                            <input type="password" class="form-control" id="password"
+                                placeholder="Entrez le mot de passe" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="role">Rôle</label>
+                            <select class="form-control" id="role" required>
+                                <option value="" disabled selected>Sélectionnez un rôle</option>
+                                <option value="employe">Employé</option>
+                                <option value="veterinaire">Vétérinaire</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Soumettre</button>
+                        <button type="reset" class="btn btn-secondary">Réinitialiser</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modale de confirmation de suppression -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Confirmer la suppression</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Êtes-vous sûr de vouloir supprimer l'utilisateur <span id="deleteUser"></span> ?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                    <button type="button" class="btn btn-danger" id="confirmDelete">Supprimer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        // Gestion de la modale de suppression
+        $('#deleteModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget); // Bouton qui a déclenché la modale
+            var username = button.data('username'); // Extraire les informations du data-* attribute
+            var modal = $(this);
+            modal.find('#deleteUser').text(username); // Insérer le nom de l'utilisateur dans la modale
+
+            // Si l'utilisateur confirme la suppression
+            $('#confirmDelete').off('click').on('click', function () {
+                // Effectuer la suppression (appel à votre backend par exemple)
+                console.log('Suppression de l\'utilisateur : ' + username);
+
+                // Fermer la modale après la suppression
+                modal.modal('hide');
+            });
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espace Employé - Zoo Arcadia</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h2>Espace Employé</h2>
+
+        <!-- Section pour les avis des visiteurs -->
+        <h4>Avis en attente de validation</h4>
+        <table class="table mt-3">
+            <thead>
+                <tr>
+                    <th>Avis</th>
+                    <th>Auteur</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Exemple d'avis -->
+                <tr>
+                    <td>Super expérience, les animaux sont bien traités !</td>
+                    <td>visiteur@example.com</td>
+                    <td>
+                        <button class="btn btn-success btn-sm" onclick="validateReview(this)">Valider</button>
+                        <button class="btn btn-danger btn-sm" onclick="deleteReview(this)">Supprimer</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Bouton pour ouvrir la modale d'ajout de consommation alimentaire -->
+        <button type="button" class="btn btn-primary mt-3" data-toggle="modal" data-target="#foodConsumptionModal">
+            Ajouter des données de consommation alimentaire
+        </button>
+
+        <!-- Modale pour ajouter/modifier des données de consommation alimentaire -->
+        <div class="modal fade" id="foodConsumptionModal" tabindex="-1" role="dialog"
+            aria-labelledby="foodConsumptionModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="foodConsumptionModalLabel">Ajouter des données de consommation
+                            alimentaire</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="foodConsumptionForm">
+                            <div class="form-group">
+                                <label for="animal">Nom de l'animal</label>
+                                <input type="text" class="form-control" id="animal"
+                                    placeholder="Entrez le nom de l'animal" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="food">Type de nourriture</label>
+                                <input type="text" class="form-control" id="food"
+                                    placeholder="Entrez le type de nourriture" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="quantity">Quantité (en kg)</label>
+                                <input type="number" class="form-control" id="quantity" placeholder="Entrez la quantité"
+                                    required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Soumettre</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        // Fonction pour valider un avis
+        function validateReview(button) {
+            const row = button.closest('tr');
+            const reviewText = row.cells[0].innerText;
+            // Envoyer une requête pour valider l'avis (simulation ici)
+            console.log('Avis validé:', reviewText);
+            row.remove(); // Supprime la ligne de la table après validation
+        }
+
+        // Fonction pour supprimer un avis
+        function deleteReview(button) {
+            const row = button.closest('tr');
+            // Envoyer une requête pour supprimer l'avis (simulation ici)
+            console.log('Avis supprimé:', row.cells[0].innerText);
+            row.remove(); // Supprime la ligne de la table après suppression
+        }
+
+        // Gestion de l'envoi du formulaire de consommation alimentaire
+        $('#foodConsumptionForm').on('submit', function (event) {
+            event.preventDefault(); // Empêche l'envoi normal du formulaire
+            const animal = $('#animal').val();
+            const food = $('#food').val();
+            const quantity = $('#quantity').val();
+
+            // Envoyer les données au serveur (simulation ici)
+            console.log('Données de consommation alimentaire ajoutées:', { animal, food, quantity });
+
+            // Fermer la modale après soumission
+            $('#foodConsumptionModal').modal('hide');
+            $(this).trigger('reset'); // Réinitialise le formulaire
+        });
+    </script>
+
+</body>
+
+</html>

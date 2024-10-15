@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espace Vétérinaire - Zoo Arcadia</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h2>Espace Vétérinaire</h2>
+
+        <!-- Formulaire pour remplir un compte rendu -->
+        <h4>Remplir un Compte Rendu</h4>
+        <form id="reportForm">
+            <div class="form-group">
+                <label for="animalName">Nom de l'animal</label>
+                <input type="text" class="form-control" id="animalName" placeholder="Entrez le nom de l'animal"
+                    required>
+            </div>
+            <div class="form-group">
+                <label for="healthStatus">État de santé</label>
+                <textarea class="form-control" id="healthStatus" rows="3" placeholder="Décrivez l'état de santé"
+                    required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="vetNotes">Remarques du vétérinaire</label>
+                <textarea class="form-control" id="vetNotes" rows="3" placeholder="Ajoutez des remarques"
+                    required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Soumettre le Compte Rendu</button>
+        </form>
+
+        <!-- Section pour les avis sur les habitats -->
+        <h4 class="mt-5">Donner un Avis sur les Habitats</h4>
+        <form id="habitatReviewForm">
+            <div class="form-group">
+                <label for="habitatName">Nom de l'habitat</label>
+                <input type="text" class="form-control" id="habitatName" placeholder="Entrez le nom de l'habitat"
+                    required>
+            </div>
+            <div class="form-group">
+                <label for="habitatCondition">État de l'habitat</label>
+                <textarea class="form-control" id="habitatCondition" rows="3" placeholder="Décrivez l'état de l'habitat"
+                    required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Soumettre l'Avis</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        // Gestion de l'envoi du formulaire de compte rendu
+        $('#reportForm').on('submit', function (event) {
+            event.preventDefault(); // Empêche l'envoi normal du formulaire
+            const animalName = $('#animalName').val();
+            const healthStatus = $('#healthStatus').val();
+            const vetNotes = $('#vetNotes').val();
+
+            // Logique pour envoyer les données au serveur (simulation ici)
+            console.log('Compte rendu ajouté:', { animalName, healthStatus, vetNotes });
+
+            // Réinitialiser le formulaire après soumission
+            $(this).trigger('reset');
+        });
+
+        // Gestion de l'envoi du formulaire d'avis sur les habitats
+        $('#habitatReviewForm').on('submit', function (event) {
+            event.preventDefault(); // Empêche l'envoi normal du formulaire
+            const habitatName = $('#habitatName').val();
+            const habitatCondition = $('#habitatCondition').val();
+
+            // Logique pour envoyer les données au serveur (simulation ici)
+            console.log('Avis sur l\'habitat ajouté:', { habitatName, habitatCondition });
+
+            // Réinitialiser le formulaire après soumission
+            $(this).trigger('reset');
+        });
+    </script>
+
+</body>
+
+</html>
