@@ -1,30 +1,61 @@
-<div class="container my-5">
-    <h2 class="text-center text-white">Laissez un Avis</h2>
-    <form>
-        <div class="mb-3">
-            <label for="name" class="form-label text-white">Nom</label>
-            <input type="text" class="form-control" id="name" placeholder="Votre nom" required>
-        </div>
-        <div class="mb-3">
-            <label for="email" class="form-label text-white">Email</label>
-            <input type="email" class="form-control" id="email" placeholder="Votre email" required>
-        </div>
-        <div class="mb-3">
-            <label for="rating" class="form-label text-white">Note</label>
-            <select class="form-select" id="rating" required>
-                <option value="" disabled selected>Sélectionnez une note</option>
-                <option value="1">1 étoile</option>
-                <option value="2">2 étoiles</option>
-                <option value="3">3 étoiles</option>
-                <option value="4">4 étoiles</option>
-                <option value="5">5 étoiles</option>
-            </select>
-        </div>
-        <div class="mb-3">
-            <label for="comment" class="form-label text-white">Commentaire</label>
-            <textarea class="form-control" id="comment" rows="4" placeholder="Votre avis" required></textarea>
-        </div>
-        <div class="text-center">
-            <button type="submit" class="btn btn-primary ">Soumettre</button>
-    </form>
-</div>
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soumettre un Avis</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h2>Soumettre un Avis</h2>
+        <form id="reviewForm">
+            <div class="form-group">
+                <label for="username">Nom d'utilisateur</label>
+                <input type="text" class="form-control" id="username" placeholder="Entrez votre nom" required>
+            </div>
+            <div class="form-group">
+                <label for="rating">Note</label>
+                <select class="form-control" id="rating" required>
+                    <option value="" disabled selected>Sélectionnez une note</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="review">Votre Avis</label>
+                <textarea class="form-control" id="review" rows="4" placeholder="Écrivez votre avis"
+                    required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Soumettre</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Gestion de la soumission du formulaire
+        $('#reviewForm').on('submit', function (event) {
+            event.preventDefault();
+            // Récupérer les données du formulaire
+            const username = $('#username').val();
+            const rating = $('#rating').val();
+            const review = $('#review').val();
+
+            // Simulation de soumission d'avis
+            console.log("Nom :", username);
+            console.log("Note :", rating);
+            console.log("Avis :", review);
+            alert('Votre avis a été soumis avec succès et sera validé par un employé.');
+            $(this).trigger('reset'); // Réinitialiser le formulaire
+        });
+    </script>
+</body>
+
+</html>

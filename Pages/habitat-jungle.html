@@ -1,75 +1,146 @@
-<div class=" Animaux-jungle">
-    <h3 class="overlay-text-container text-center text-white ">Les animaux de la Jungle</h3>
-    <P class="overlay-text-container text-center text-white">La jungle est une partie de la forêt tropicale humide ;
-        elle est très dense et sauvage. On y
-        trouve beaucoup de plantes et d'animaux différents .</P>
+<!DOCTYPE html>
+<html lang="fr">
 
-    <div class=" habitat-list">
-        <article class="habitat-card">
-            <img src="../node_modules/images/Jaguar.jpg" alt="Jaguar">
-            <h3 class="overlay-text-container text-primary">Jeti</h3>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animaux de la Jungle</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
 
-            <div class="description">
-                <p>Race : Jaguar</p>
-                <p>Habitat : Jungle</p>
-                <h3 class="overlay-text-container text-white text-center">Observations Veterinaires</h3>
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Etat : en bonne santé</th>
-                            <th>Alimentation : Carnivore</th>
-                        </tr>
-                        <th>Grammage nourriture : 3kg/j</th>
-                        <th>Date de passage: 13/10/2024</th>
-                        </tr>
-                    </thead>
-                </table>
+<body>
+    <div class="Animaux-jungle">
+        <h3 class="overlay-text-container text-center text-white">Les animaux de la Jungle</h3>
+        <p class="overlay-text-container text-center text-white">La jungle est une partie de la forêt tropicale humide;
+            elle est très dense et sauvage. On y trouve beaucoup de plantes et d'animaux différents.</p>
 
-            </div>
-        </article>
-        <article class=" habitat-card">
-            <img src="../node_modules/images/Orang-outan.jpg" alt="orang-outan">
-            <h3 class="overlay-text-container text-primary">Lomako</h3>
+        <div class="habitat-list">
+            <article class="habitat-card">
+                <img src="../node_modules/images/Jaguar.jpg" alt="Jaguar">
+                <h3 class="overlay-text-container text-primary">Jeti</h3>
+                <div class="description">
+                    <p>Race : Jaguar</p>
+                    <p>Habitat : Jungle</p>
+                    <h3 class="overlay-text-container text-white text-center">Observations Vétérinaires</h3>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>État : en bonne santé</th>
+                                <th>Alimentation : Carnivore</th>
+                            </tr>
+                            <tr>
+                                <td>Grammage nourriture : <span class="editable" data-field="food-quantity">3kg/j</span>
+                                </td>
+                                <td>Date de passage : <span class="editable" data-field="visit-date">13/10/2024</span>
+                                </td>
+                            </tr>
+                        </thead>
+                    </table>
+                    <button class="edit-btn" onclick="editAnimal('Jeti')">Modifier</button>
+                </div>
+            </article>
+            <article class="habitat-card">
+                <img src="../node_modules/images/Orang-outan.jpg" alt="Orang-outan">
+                <h3 class="overlay-text-container text-primary">Lomako</h3>
+                <div class="description">
+                    <p>Race : Orang-outan</p>
+                    <p>Habitat : Jungle</p>
+                    <h3 class="overlay-text-container text-white text-center">Observations Vétérinaires</h3>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>État : en bonne santé</th>
+                                <th>Alimentation : Omnivore</th>
+                            </tr>
+                            <tr>
+                                <td>Grammage nourriture : <span class="editable" data-field="food-quantity">7kg/j</span>
+                                </td>
+                                <td>Date de passage : <span class="editable" data-field="visit-date">13/10/2024</span>
+                                </td>
+                            </tr>
+                        </thead>
+                    </table>
+                    <button class="edit-btn" onclick="editAnimal('Lomako')">Modifier</button>
+                </div>
+            </article>
+            <article class="habitat-card">
+                <img src="../node_modules/images/Tigre.jpg" alt="Tigre">
+                <h3 class="overlay-text-container text-primary">Orval</h3>
+                <div class="description">
+                    <p>Race : Tigre</p>
+                    <p>Habitat : Jungle</p>
+                    <h3 class="overlay-text-container text-white text-center">Observations Vétérinaires</h3>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>État : en bonne santé</th>
+                                <th>Alimentation : Carnivore</th>
+                            </tr>
+                            <tr>
+                                <td>Grammage nourriture : <span class="editable"
+                                        data-field="food-quantity">10kg/j</span></td>
+                                <td>Date de passage : <span class="editable" data-field="visit-date">13/10/2024</span>
+                                </td>
+                            </tr>
+                        </thead>
+                    </table>
+                    <button class="edit-btn" onclick="editAnimal('Orval')">Modifier</button>
+                </div>
+            </article>
+        </div>
 
-            <div class="description">
-                <p>Race : Orang-outan</p>
-                <p>Habitat : Jungle</p>
-                <h3 class="overlay-text-container text-white text-center">Observations Veterinaires</h3>
-                <table class="table table-bordered">
-                    <thead>
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>Etat : en bonne santé</th>
-                                    <th>Alimentation : Omnivore</th>
-                                </tr>
-                                <th>Grammage nourriture : 7kg/j</th>
-                                <th>Date de passage: 13/10/2024</th>
-                                </tr>
-                            </thead>
-                        </table>
-
-
-        </article>
-        <article class="habitat-card">
-            <img src="../node_modules/images/Tigre.jpg" alt="Tigre">
-            <h3 class="overlay-text-container text-primary">Orval</h3>
-            <p>Race : tigre</p>
-            <p>Habitat : Jungle</p>
-            <h3 class="overlay-text-container text-white text-center">Observations Veterinaires</h3>
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>Etat : en bonne santé</th>
-                        <th>Alimentation : Carnivore</th>
-                    </tr>
-                    <th>Grammage nourriture : 10kg/j</th>
-                    <th>Date de passage: 13/10/2024</th>
-                    </tr>
-                </thead>
-            </table>
-
-
-
-        </article>
+        <div>
+            <button onclick="simulateRole('veterinaire')">Simuler Vétérinaire</button>
+            <button onclick="simulateRole('employe')">Simuler Employé</button>
+            <button onclick="simulateRole('visiteur')">Simuler Visiteur</button>
+        </div>
     </div>
+
+    <script>
+        let userRole = 'visiteur'; // Rôle par défaut
+
+        function simulateRole(role) {
+            userRole = role;
+
+            updateEditButtons();
+        }
+
+        function updateEditButtons() {
+            const editButtons = document.querySelectorAll('.edit-btn');
+            editButtons.forEach(button => {
+                if (userRole === 'veterinaire') {
+                    button.style.display = 'block'; // Afficher pour vétérinaire
+                } else if (userRole === 'employe') {
+                    button.style.display = 'block'; // Afficher pour employé
+                } else {
+                    button.style.display = 'none'; // Masquer pour visiteur
+                }
+            });
+        }
+
+        function editAnimal(animalName) {
+            const animalCard = [...document.querySelectorAll('.habitat-card')].find(card => card.querySelector('h3').textContent === animalName);
+            const foodQuantityElement = animalCard.querySelector('[data-field="food-quantity"]');
+            const visitDateElement = animalCard.querySelector('[data-field="visit-date"]');
+
+            if (userRole === 'veterinaire') {
+                const newFoodQuantity = prompt("Entrez la nouvelle quantité de nourriture:", foodQuantityElement.textContent);
+                const newVisitDate = prompt("Entrez la nouvelle date de passage:", visitDateElement.textContent);
+
+                if (newFoodQuantity) foodQuantityElement.textContent = newFoodQuantity;
+                if (newVisitDate) visitDateElement.textContent = newVisitDate;
+            } else if (userRole === 'employe') {
+                const newFoodQuantity = prompt("Entrez la nouvelle quantité de nourriture:", foodQuantityElement.textContent);
+                const newVisitDate = prompt("Entrez la nouvelle date de passage:", visitDateElement.textContent);
+
+                if (newFoodQuantity) foodQuantityElement.textContent = newFoodQuantity;
+                if (newVisitDate) visitDateElement.textContent = newVisitDate;
+            } else {
+                alert("Vous n'avez pas les permissions nécessaires pour modifier ces informations.");
+            }
+        }
+    </script>
+</body>
+
+</html>
