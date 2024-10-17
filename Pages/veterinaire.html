@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Espace Vétérinaire - Zoo Arcadia</title>
-
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -17,8 +17,10 @@
         <form id="reportForm">
             <div class="form-group">
                 <label for="animalName">Nom de l'animal</label>
-                <input type="text" class="form-control" id="animalName" placeholder="Entrez le nom de l'animal"
-                    required>
+                <select class="form-control" id="animalName" required>
+                    <option value="">Sélectionnez un animal</option>
+                    <!-- Les options seront ajoutées dynamiquement ici -->
+                </select>
             </div>
             <div class="form-group">
                 <label for="healthStatus">État de santé</label>
@@ -38,8 +40,7 @@
         <form id="habitatReviewForm">
             <div class="form-group">
                 <label for="habitatName">Nom de l'habitat</label>
-                <input type="text" class="form-control" id="habitatName" placeholder="Entrez le nom de l'habitat"
-                    required>
+                <select type="text" class="form-control" id="habitatName" required>
             </div>
             <div class="form-group">
                 <label for="habitatCondition">État de l'habitat</label>
@@ -50,39 +51,64 @@
         </form>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
     <script>
+        // Liste d'animaux préremplie
+        const animals = [
+            "Lion", "Zèbre", "Girafe", "Jaguar", "Orang-outan", "Tigre", "Loutre", "Pelican", "Crocodile"
+        ];
+
+
+        // Remplir le champ de sélection avec les noms d'animaux
+        const animalSelect = document.getElementById('animalName');
+        animals.forEach(animal => {
+            const option = document.createElement('option');
+            option.value = animal;
+            option.textContent = animal;
+            animalSelect.appendChild(option);
+        });
+
         // Gestion de l'envoi du formulaire de compte rendu
-        $('#reportForm').on('submit', function (event) {
+        document.getElementById('reportForm').addEventListener('submit', function (event) {
             event.preventDefault(); // Empêche l'envoi normal du formulaire
-            const animalName = $('#animalName').val();
-            const healthStatus = $('#healthStatus').val();
-            const vetNotes = $('#vetNotes').val();
+            const animalName = document.getElementById('animalName').value;
+            const healthStatus = document.getElementById('healthStatus').value;
+            const vetNotes = document.getElementById('vetNotes').value;
 
             // Logique pour envoyer les données au serveur (simulation ici)
             console.log('Compte rendu ajouté:', { animalName, healthStatus, vetNotes });
 
             // Réinitialiser le formulaire après soumission
-            $(this).trigger('reset');
+            this.reset();
+        });
+
+
+        // Liste d'habitats préremplie
+        const habitats = [
+            "Savane ", "Jungle", "Marais"
+        ];
+
+        // Remplir le champ de sélection avec les noms d'animaux
+        const habitatSelect = document.getElementById('habitatName');
+        habitats.forEach(habitat => {
+            const option = document.createElement('option');
+            option.value = habitat;
+            option.textContent = habitat;
+            habitatSelect.appendChild(option);
         });
 
         // Gestion de l'envoi du formulaire d'avis sur les habitats
-        $('#habitatReviewForm').on('submit', function (event) {
+        document.getElementById('habitaReviewForm').addEventListener('submit', function (event) {
             event.preventDefault(); // Empêche l'envoi normal du formulaire
-            const habitatName = $('#habitatName').val();
-            const habitatCondition = $('#habitatCondition').val();
+            const habitatName = document.getElementById('habitatName').value;
+            const habitatCondition = document.getElementById('habitatCondition').value;
 
             // Logique pour envoyer les données au serveur (simulation ici)
             console.log('Avis sur l\'habitat ajouté:', { habitatName, habitatCondition });
 
             // Réinitialiser le formulaire après soumission
-            $(this).trigger('reset');
+            this.reset();
         });
     </script>
-
 </body>
 
 </html>

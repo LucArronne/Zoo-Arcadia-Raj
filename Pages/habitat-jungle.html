@@ -37,7 +37,7 @@
                             </tr>
                         </thead>
                     </table>
-                    <button class="edit-btn" onclick="editAnimal('Jeti')">Modifier</button>
+
                 </div>
             </article>
             <article class="habitat-card">
@@ -61,7 +61,7 @@
                             </tr>
                         </thead>
                     </table>
-                    <button class="edit-btn" onclick="editAnimal('Lomako')">Modifier</button>
+
                 </div>
             </article>
             <article class="habitat-card">
@@ -85,34 +85,25 @@
                             </tr>
                         </thead>
                     </table>
-                    <button class="edit-btn" onclick="editAnimal('Orval')">Modifier</button>
+
                 </div>
             </article>
         </div>
 
         <div>
-            <button onclick="simulateRole('veterinaire')">Simuler Vétérinaire</button>
-            <button onclick="simulateRole('employe')">Simuler Employé</button>
-            <button onclick="simulateRole('visiteur')">Simuler Visiteur</button>
+
         </div>
     </div>
 
     <script>
-        let userRole = 'visiteur'; // Rôle par défaut
 
-        function simulateRole(role) {
-            userRole = role;
-
-            updateEditButtons();
-        }
 
         function updateEditButtons() {
             const editButtons = document.querySelectorAll('.edit-btn');
             editButtons.forEach(button => {
-                if (userRole === 'veterinaire') {
+                if (userRole === 'veterinaire' || userRole === 'employe') {
                     button.style.display = 'block'; // Afficher pour vétérinaire
-                } else if (userRole === 'employe') {
-                    button.style.display = 'block'; // Afficher pour employé
+
                 } else {
                     button.style.display = 'none'; // Masquer pour visiteur
                 }
@@ -124,13 +115,7 @@
             const foodQuantityElement = animalCard.querySelector('[data-field="food-quantity"]');
             const visitDateElement = animalCard.querySelector('[data-field="visit-date"]');
 
-            if (userRole === 'veterinaire') {
-                const newFoodQuantity = prompt("Entrez la nouvelle quantité de nourriture:", foodQuantityElement.textContent);
-                const newVisitDate = prompt("Entrez la nouvelle date de passage:", visitDateElement.textContent);
-
-                if (newFoodQuantity) foodQuantityElement.textContent = newFoodQuantity;
-                if (newVisitDate) visitDateElement.textContent = newVisitDate;
-            } else if (userRole === 'employe') {
+            if (userRole === 'veterinaire' || userRole === 'employe') {
                 const newFoodQuantity = prompt("Entrez la nouvelle quantité de nourriture:", foodQuantityElement.textContent);
                 const newVisitDate = prompt("Entrez la nouvelle date de passage:", visitDateElement.textContent);
 
@@ -140,6 +125,8 @@
                 alert("Vous n'avez pas les permissions nécessaires pour modifier ces informations.");
             }
         }
+
+
     </script>
 </body>
 
