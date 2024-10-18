@@ -35,7 +35,7 @@ footer {
     }
    
     .lion-scene {
-      position: relative;
+      position: fixed;
       margin-bottom: 15px;
     &::before{
         content:"";
@@ -56,7 +56,7 @@ footer {
     }
 
     .lion-scene-content{
-        height: 600px;
+        height: 300;
         min-width: 100%;
        display: flex;
         flex-direction: column;
