@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Espace Employé - Zoo Arcadia</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -39,10 +39,12 @@
         <!-- Section pour la consommation alimentaire des animaux -->
         <div class="container">
             <h3>Tableau de Consommation Alimentaire</h3>
+
+
+
             <table class="table table-bordered" id="consumptionTable">
                 <thead>
                     <tr>
-                        <th>Nom de l'animal</th>
                         <th>Type de nourriture</th>
                         <th>Quantité (en kg)</th>
                         <th>Date de passage</th>
@@ -56,25 +58,42 @@
 
             <!-- Formulaire pour ajouter une nouvelle entrée -->
             <form id="addFoodConsumptionForm">
-                <div class="form-row">
-                    <div class="col">
-                        <input type="text" class="form-control" id="animalName" placeholder="Nom de l'animal" required>
-                    </div>
-                    <div class="col">
-                        <input type="text" class="form-control" id="foodType" placeholder="Type de nourriture" required>
-                    </div>
-                    <div class="col">
-                        <input type="number" class="form-control" id="quantity" placeholder="Quantité (kg)" required>
-                    </div>
-                    <div class="col">
-                        <input type="date" class="form-control" id="visitDate" required>
-                    </div>
-                    <div class="col">
-                        <button type="submit" class="btn btn-primary">Ajouter</button>
-                    </div>
+                <div class="mb-4">
+                    <label for="filterAnimal">Filtrer par Animal :</label>
+                    <select class="form-control" id="filterAnimal">
+                        <option value="all">Tous les Animaux</option>
+                        <option value="lion">Lion</option>
+                        <option value="zebre">Zèbre</option>
+                        <option value="girafe">Girafe</option>
+                        <option value="jaguar">Jaguar</option>
+                        <option value="orang_outan">Orang-outan</option>
+                        <option value="tigre">Tigre</option>
+                        <option value="loutre">Loutre</option>
+                        <option value="pelican">Pélican</option>
+                        <option value="crocodile">Crocodile</option>
+                    </select>
                 </div>
-            </form>
+                <div class="form-row">
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" id="foodType" placeholder="Type de nourriture" required>
+                </div>
+                <div class="col">
+                    <input type="number" class="form-control" id="quantity" placeholder="Quantité (kg)" required>
+                </div>
+                <div class="col">
+                    <input type="date" class="form-control" id="visitDate" required>
+                </div>
+                <!--Champ heure-->
+                <div class="col">
+                    <input type="time" class="form-control" id="visitHour" required>
+                </div>
+                <div class="col">
+                    <button type="submit" class="btn btn-primary">Ajouter</button>
+                </div>
         </div>
+        </form>
+    </div>
     </div>
     </div>
     </div>
@@ -84,34 +103,33 @@
 
     <script>
         // Fonction pour valider un avis
-        function validateReview(button) {
-            const row = button.closest('tr');
-            const reviewText = row.cells[0].innerText;
-            // Envoyer une requête pour valider l'avis (simulation ici)
-            console.log('Avis validé:', reviewText);
-            row.remove(); // Supprime la ligne de la table après validation
-        }
-
-        // Fonction pour supprimer un avis
-        function deleteReview(button) {
-            const row = button.closest('tr');
-            // Envoyer une requête pour supprimer l'avis (simulation ici)
-            console.log('Avis supprimé:', row.cells[0].innerText);
-            row.remove(); // Supprime la ligne de la table après suppression
-        }
-
-        // Gestion de l'envoi du formulaire de consommation alimentaire
         $('#foodConsumptionForm').on('submit', function (event) {
             event.preventDefault(); // Empêche l'envoi normal du formulaire
-            const animal = $('#animal').val();
-            const food = $('#food').val();
+            const foodType = $('#foodType').val();
             const quantity = $('#quantity').val();
+            const visitDate = $('#visitDate').val();
+            const visitHour = $('#visitHour').val();
 
-            // Envoyer les données au serveur (simulation ici)
-            console.log('Données de consommation alimentaire ajoutées:', { animal, food, quantity });
+            // Ajouter les données dans le tableau
+            const newRow = `
+        <tr>
+            <td>${foodType}</td>
+            <td>${quantity}</td>
+            <td>${visitDate} à ${visitHour} </td>
+            <td>
+                <button class="btn btn-danger btn-sm" onclick="deleteRow(this)">Supprimer</button>
+            </td>
+        </tr>`;
+            $('#consumptionTable tbody').append(newRow);
 
-
+            // Réinitialiser le formulaire
+            $('#foodConsumptionForm')[0].reset();
         });
+
+        // Fonction pour supprimer une ligne du tableau
+        function deleteRow(button) {
+            $(button).closest('tr').remove();
+        }
     </script>
 
 </body>
