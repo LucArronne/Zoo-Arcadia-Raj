@@ -33,39 +33,68 @@ footer {
     margin-left: 10px;
     
     }
-   
     .lion-scene {
-      position: fixed;
+      position: relative;
       margin-bottom: 15px;
-    &::before{
-        content:"";
-        position: absolute;
-        top:0;
-        left:0;
-        width:100%;
-        height:100%;
-        background-image: url(../node_modules/images/LionScene.jpg);
-        background-size: cover;
-        filter: brightness(0.8);
-        border-radius: 0%;
-    }
-
-    *{
-        //Positionner les éléments devant le ::before
-        position:relative;
-    }
-
-    .lion-scene-content{
-        height: 300;
-        min-width: 100%;
-       display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-       
-    }
-}
-
+  
+      &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-image: url(../node_modules/images/LionScene.jpg);
+          background-size: cover; /* L'image couvrira le conteneur */
+          background-position: center; /* Centrer l'image de fond */
+          background-repeat: no-repeat; /* Empêche la répétition */
+          filter: brightness(0.8);
+          border-radius: 0%;
+          z-index: 1; /* Assurez-vous que l'image est derrière le contenu */
+      }
+  
+      * {
+          position: relative; /* Positionner les éléments devant le ::before */
+          z-index: 2; /* Mettre le contenu au-dessus de l'image de fond */
+      }
+  
+      .lion-scene {
+          height: auto ; /* Hauteur fixe, à ajuster si nécessaire */
+          display:flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          z-index: 2; /* Assurez-vous que le contenu est au-dessus de l'image */
+      }
+  }
+  
+  /* Médias Queries pour mobile */
+  @media (max-width: 768px) { /* Ajustez la largeur selon vos besoins */
+      .lion-scene {
+          .lion-scene-content {
+              min-height: auto; /* Ajustez la hauteur pour mobile */
+              padding: 20px; /* Ajouter du padding pour l'espacement */
+            }
+            
+  
+          &::before {
+              background-size: contain; /* Adapter l'image pour mobile */
+          }
+      }
+  }
+  
+  @media (max-width: 480px) {
+      .lion-scene {
+          .lion-scene-content {
+              height: 300px; /* Ajustez la hauteur pour mobile */
+              padding: 10px;
+          }
+  
+          &::before {
+              background-size: contain; /* Adapter l'image pour mobile */
+          }
+      }
+  }
    
 
       /* Ajout overlay */

@@ -12010,22 +12010,45 @@ footer {
   width: 100%;
   height: 100%;
   background-image: url(../node_modules/images/LionScene.jpg);
-  background-size: cover;
+  background-size: cover; /* L'image couvrira le conteneur */
+  background-position: center; /* Centrer l'image de fond */
+  background-repeat: no-repeat; /* Empêche la répétition */
   filter: brightness(0.8);
   border-radius: 0%;
+  z-index: 1; /* Assurez-vous que l'image est derrière le contenu */
 }
 .lion-scene * {
-  position: relative;
+  position: relative; /* Positionner les éléments devant le ::before */
+  z-index: 2; /* Mettre le contenu au-dessus de l'image de fond */
 }
 .lion-scene .lion-scene-content {
-  height: 600px;
-  min-width: 100%;
+  height: 600px; /* Hauteur fixe, à ajuster si nécessaire */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  z-index: 2; /* Assurez-vous que le contenu est au-dessus de l'image */
 }
 
+/* Médias Queries pour mobile */
+@media (max-width: 768px) { /* Ajustez la largeur selon vos besoins */
+  .lion-scene .lion-scene-content {
+    height: auto; /* Ajustez la hauteur pour mobile */
+    padding: 20px; /* Ajouter du padding pour l'espacement */
+  }
+  .lion-scene::before {
+    background-size: contain; /* Adapter l'image pour mobile */
+  }
+}
+@media (max-width: 480px) {
+  .lion-scene .lion-scene-content {
+    height: 300px; /* Ajustez la hauteur pour mobile */
+    padding: 10px;
+  }
+  .lion-scene::before {
+    background-size: contain; /* Adapter l'image pour mobile */
+  }
+}
 /* Ajout overlay */
 .background-section {
   position: relative;
