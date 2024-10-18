@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Soumettre un Avis</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -36,26 +36,7 @@
         </form>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script>
-        // Gestion de la soumission du formulaire
-        $('#reviewForm').on('submit', function (event) {
-            event.preventDefault();
-            // Récupérer les données du formulaire
-            const username = $('#username').val();
-            const rating = $('#rating').val();
-            const review = $('#review').val();
 
-            // Simulation de soumission d'avis
-            console.log("Nom :", username);
-            console.log("Note :", rating);
-            console.log("Avis :", review);
-            alert('Votre avis a été soumis avec succès . Merci !');
-            $(this).trigger('reset'); // Réinitialiser le formulaire
-        });
-    </script>
 </body>
 
 </html>
