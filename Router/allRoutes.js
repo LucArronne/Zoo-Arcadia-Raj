@@ -13,7 +13,7 @@ export const allRoutes = [
     new Route("/guide", "guide", "/pages/guide.html"),
     new Route("/connexion", "connexion", "/pages/connexion.html", "/js/connexion.js"),
     new Route("/avis", "avis", "/pages/avis.html", "/js/avis.js"),
-    new Route("/contact", "contact", "/pages/contact.html"),
+    new Route("/contact", "contact", "/pages/contact.html", "/js/contact.js"),
     new Route("/gestionuser", "gestionuser", "/pages/gestionuser.html"),
     new Route("/employé", "employé", "/pages/employé.html"),
     new Route("/veterinaire", "veterinaire", "/pages/veterinaire.html"),
