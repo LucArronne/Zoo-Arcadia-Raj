@@ -12021,8 +12021,8 @@ footer {
   position: relative; /* Positionner les éléments devant le ::before */
   z-index: 2; /* Mettre le contenu au-dessus de l'image de fond */
 }
-.lion-scene .lion-scene-content {
-  height: 600px; /* Hauteur fixe, à ajuster si nécessaire */
+.lion-scene .lion-scene {
+  height: auto; /* Hauteur fixe, à ajuster si nécessaire */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12033,7 +12033,7 @@ footer {
 /* Médias Queries pour mobile */
 @media (max-width: 768px) { /* Ajustez la largeur selon vos besoins */
   .lion-scene .lion-scene-content {
-    height: auto; /* Ajustez la hauteur pour mobile */
+    min-height: auto; /* Ajustez la hauteur pour mobile */
     padding: 20px; /* Ajouter du padding pour l'espacement */
   }
   .lion-scene::before {
@@ -12155,20 +12155,6 @@ p {
   width: 100px;
   border-radius: 10px;
   margin-bottom: 10px;
-}
-
-.row {
-  /* --bs-gutter-x: 1.5rem; */
-  /* --bs-gutter-y: 0; */
-  display: flex;
-  /* margin-top: calc(-1* var(--bs-gutter-y)); */
-  margin-right: calc(-0.5 * var(--bs-gutter-x));
-  margin-left: calc(-0.5 * var(--bs-gutter-x));
-  justify-content: center;
-  align-items: baseline;
-  /* align-content: center; */
-  flex-wrap: wrap;
-  /* flex-direction: row-reverse; */
 }
 
 /* Services - services*/

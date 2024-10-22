@@ -1,30 +1,18 @@
-// Stockage des utilisateurs avec leurs rôles (simulé côté client)
-const users = [
-    { email: "admin@zooarcadia.com", password: "admin123", role: "admin" },
-    { email: "vet@zooarcadia.com", password: "vet123", role: "veterinaire" },
-    { email: "employee@zooarcadia.com", password: "emp123", role: "employee" }
-];
+const mailInput = document.getElementById("EmailInput");
+const passwordInput = document.getElementById("PasswordInput");
+const btnSignin = document.getElementById("btnSignin");
 
-// Gestion de la soumission du formulaire de connexion
-$('#loginForm').on('submit', function (event) {
-    event.preventDefault(); // Empêche l'envoi normal du formulaire
-    const email = $('#email').val();
-    const password = $('#password').val();
-    
-    // Vérification des informations d'identification côté client
-    const user = users.find(u => u.email === email && u.password === password);
+btnSignin.addEventListener("click", ckeckCredentials);
 
-    if (user) {
-        // Redirection en fonction du rôle de l'utilisateur
-        if (user.role === "admin") {
-            window.location.href = "admin-dashboard.html";
-        } else if (user.role === "veterinarian") {
-            window.location.href = "vet-dashboard.html";
-        } else if (user.role === "employee") {
-            window.location.href = "employee-dashboard.html";
-        }
-    } else {
-        // Affichage d'un message d'erreur si l'utilisateur n'est pas trouvé
-        $('#error-message').text("Identifiants invalides. Veuillez réessayer.").show();
-    }
-});
+function ckeckCredentials(){
+   // appel Api en bdd// 
+   if (mailInput.value === "administrateur@mail.fr" && passwordInput.value === "123" || mailInput.value === "Employé@mail.fr" && passwordInput.value === "345" || mailInput.value === "vétérinaire@mail.fr" && passwordInput.value === "567"){
+
+window.location.replace("/");
+}
+else{
+    mailInput.classList.add ("Identifiants incorrects");
+    passwordInput.classList.add ("Identifiants incorrects");
+    alert("Identifiants incorrects");
+}
+}
