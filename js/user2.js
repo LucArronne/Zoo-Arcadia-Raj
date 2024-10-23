@@ -32,7 +32,7 @@
 
         // Récupérer les valeurs du formulaire
         var foodType = document.getElementById('foodType').value;
-        var quantity = document.getElementById('quantity').value;
+        var quantity = document.getElementById('quantconity').value;
         var visitDate = document.getElementById('visitDate').value;
         var visitHour = document.getElementById('visitHour').value;
 
