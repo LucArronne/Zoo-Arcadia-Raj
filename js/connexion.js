@@ -27,7 +27,7 @@ function checkCredentials(event) {
                 break;
             case "employe":
                 // Redirige l'employé vers la page Employé
-                window.location.replace("/pages/employé.html");
+                window.location.replace("/pages/user2.html");
                 break;
             case "veterinaire":
                 // Redirige le vétérinaire vers la page vétérianire

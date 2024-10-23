@@ -5,29 +5,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Espace Vétérinaire - Zoo Arcadia</title>
-    <link href=https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css rel="stylesheet">
+
 </head>
 
 <body>
     <div class="container mt-5">
-        <h2>Espace Vétérinaire</h2>
+        <h2 class="overlay-text-container text-center text-white">Espace Vétérinaire</h2>
 
         <!-- Formulaire pour remplir un compte rendu -->
-        <h4>Remplir un Compte Rendu</h4>
+        <h4 class=" text-center text-white">Remplir un Compte Rendu</h4>
         <form id="reportForm">
             <div class="form-group">
-                <label for="animalName">Nom de l'animal</label>
-                <select class="form-control" id="animalName" required>
-                    <option value="">Sélectionnez un animal</option>
-                    <!-- Les options seront ajoutées dynamiquement ici -->
-                </select>
+
+
+                <form id="addAnimal">
+                    <div class="mb-4 text-white">
+                        <label for="filterAnimal">Nom de l'Animal :</label>
+                        <select class="form-control" id="filterAnimal">
+                            <option value="all">Tous les Animaux</option>
+                            <option value="lion">Lion</option>
+                            <option value="zebre">Zèbre</option>
+                            <option value="girafe">Girafe</option>
+                            <option value="jaguar">Jaguar</option>
+                            <option value="orang_outan">Orang-outan</option>
+                            <option value="tigre">Tigre</option>
+                            <option value="loutre">Loutre</option>
+                            <option value="pelican">Pélican</option>
+                            <option value="crocodile">Crocodile</option>
+                        </select>
+                    </div>
+                    </select>
             </div>
-            <div class="form-group">
+            <div class="form-group text-white">
                 <label for="healthStatus">État de santé</label>
                 <textarea class="form-control" id="healthStatus" rows="3" placeholder="Décrivez l'état de santé"
                     required></textarea>
             </div>
-            <div class="form-group">
+            <div class="form-group text-white">
                 <label for="vetNotes">Remarques du vétérinaire</label>
                 <textarea class="form-control" id="vetNotes" rows="3" placeholder="Ajoutez des remarques"
                     required></textarea>
@@ -36,79 +50,42 @@
         </form>
 
         <!-- Section pour les avis sur les habitats -->
-        <h4 class="mt-5">Donner un Avis sur les Habitats</h4>
+        <h4 class="mt-5 text-white">Donner un Avis sur les Habitats</h4>
         <form id="habitatReviewForm">
-            <div class="form-group">
-                <label for="habitatName">Nom de l'habitat</label>
-                <select type="text" class="form-control" id="habitatName" required>
-            </div>
-            <div class="form-group">
-                <label for="habitatCondition">État de l'habitat</label>
-                <textarea class="form-control" id="habitatCondition" rows="3" placeholder="Décrivez l'état de l'habitat"
-                    required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Soumettre l'Avis</button>
+            <div class="form-group text-white">
+                <label for="habitatName">Nom de l'Habitat :</label>
+
+                <select class="form-control" id="filterAnimal">
+                    <option value="all">Tous les Habitats</option>
+                    <option value="lion">Savane</option>
+                    <option value="zebre">Jungle</option>
+                    <option value="girafe">Marais</option>
+                    <button type="submit" class="btn btn-primary">Soumettre l'Avis</button>
         </form>
-    </div>
+        <div class="form-group">
+            <label for="vetNotesHabitat">Remarques du vétérinaire</label>
+            <textarea class="form-control" id="vetNotes" rows="3" placeholder="Ajoutez des remarques"
+                required></textarea>
+            <button type="submit" class="btn btn-primary">Soumettre le Compte Rendu</button>
+            </form>
 
-    <script>
-        // Liste d'animaux préremplie
-        const animals = [
-            "Lion", "Zèbre", "Girafe", "Jaguar", "Orang-outan", "Tigre", "Loutre", "Pelican", "Crocodile"
-        ];
-
-
-        // Remplir le champ de sélection avec les noms d'animaux
-        const animalSelect = document.getElementById('animalName');
-        animals.forEach(animal => {
-            const option = document.createElement('option');
-            option.value = animal;
-            option.textContent = animal;
-            animalSelect.appendChild(option);
-        });
-
-        // Gestion de l'envoi du formulaire de compte rendu
-        document.getElementById('reportForm').addEventListener('submit', function (event) {
-            event.preventDefault(); // Empêche l'envoi normal du formulaire
-            const animalName = document.getElementById('animalName').value;
-            const healthStatus = document.getElementById('healthStatus').value;
-            const vetNotes = document.getElementById('vetNotes').value;
-
-            // Logique pour envoyer les données au serveur (simulation ici)
-            console.log('Compte rendu ajouté:', { animalName, healthStatus, vetNotes });
-
-            // Réinitialiser le formulaire après soumission
-            this.reset();
-        });
+            <!-- Tableau des habitats existants -->
+            <table class="table table-bordered mt-4" id="userconsuptionTable">
+                <thead>
+                    <tr>
+                        <th>Nom de l'animal</th>
+                        <th>Etat de santé</th>
+                        <th>Remarques</th>
+                        <th>Habitats</th>
+                        <th>Remarques</th>
+                    </tr>
+                </thead>
+                <tbody id="userTableBody">
+                    <!-- Les utilisateurs seront ajoutés ici dynamiquement -->
+        </div>
 
 
-        // Liste d'habitats préremplie
-        const habitats = [
-            "Savane ", "Jungle", "Marais"
-        ];
 
-        // Remplir le champ de sélection avec les noms d'animaux
-        const habitatSelect = document.getElementById('habitatName');
-        habitats.forEach(habitat => {
-            const option = document.createElement('option');
-            option.value = habitat;
-            option.textContent = habitat;
-            habitatSelect.appendChild(option);
-        });
-
-        // Gestion de l'envoi du formulaire d'avis sur les habitats
-        document.getElementById('habitaReviewForm').addEventListener('submit', function (event) {
-            event.preventDefault(); // Empêche l'envoi normal du formulaire
-            const habitatName = document.getElementById('habitatName').value;
-            const habitatCondition = document.getElementById('habitatCondition').value;
-
-            // Logique pour envoyer les données au serveur (simulation ici)
-            console.log('Avis sur l\'habitat ajouté:', { habitatName, habitatCondition });
-
-            // Réinitialiser le formulaire après soumission
-            this.reset();
-        });
-    </script>
 </body>
 
 </html>

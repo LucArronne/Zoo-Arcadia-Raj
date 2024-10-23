@@ -20,6 +20,7 @@ export const allRoutes = [
     new Route("/statistiques", "statistiques", "/pages/statistiques.html", "/js/statistiques.js"),
     new Route("/compteRendu", "compteRendu", "/pages/compteRendu.html", "/js/compteRendu.js"),
     new Route("/user2", "user2", "/pages/user2.html", "/js/user2.js"),
+    new Route("/linkuser", "linkuser", "/pages/linkuser.html"),
 ];
 
 //Le titre s'affiche comme ceci : Route.titre - websitename
