@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espace Employé - Zoo Arcadia</title>
+
+
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h2>Espace Employé</h2>
+
+        <!-- Section pour les avis des visiteurs -->
+        <h4>Avis en attente de validation</h4>
+        <table class="table mt-3">
+            <thead>
+                <tr>
+                    <th>Avis</th>
+                    <th>Auteur</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Exemple d'avis -->
+                <tr>
+                    <td>Super expérience, les animaux sont bien traités !</td>
+                    <td>visiteur@example.com</td>
+                    <td>
+                        <button class="btn btn-success btn-sm" onclick="validateReview(this)">Valider</button>
+                        <button class="btn btn-danger btn-sm" onclick="deleteReview(this)">Supprimer</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <!-- Section pour la consommation alimentaire des animaux -->
+        <div class="container">
+            <h3>Tableau de Consommation Alimentaire</h3>
+
+
+
+            <table class="table table-bordered" id="consumptionTable">
+                <thead>
+                    <tr>
+                        <th>Type de nourriture</th>
+                        <th>Quantité (en kg)</th>
+                        <th>Date de passage</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Les lignes du tableau seront ajoutées dynamiquement ici -->
+                </tbody>
+            </table>
+
+            <!-- Formulaire pour ajouter une nouvelle entrée -->
+            <form id="addFoodConsumptionForm">
+                <div class="mb-4">
+                    <label for="filterAnimal">Filtrer par Animal :</label>
+                    <select class="form-control" id="filterAnimal">
+                        <option value="all">Tous les Animaux</option>
+                        <option value="lion">Lion</option>
+                        <option value="zebre">Zèbre</option>
+                        <option value="girafe">Girafe</option>
+                        <option value="jaguar">Jaguar</option>
+                        <option value="orang_outan">Orang-outan</option>
+                        <option value="tigre">Tigre</option>
+                        <option value="loutre">Loutre</option>
+                        <option value="pelican">Pélican</option>
+                        <option value="crocodile">Crocodile</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" id="foodType" placeholder="Type de nourriture" required>
+                </div>
+                <div class="col">
+                    <input type="number" class="form-control" id="quantity" placeholder="Quantité (kg)" required>
+                </div>
+                <div class="col">
+                    <input type="date" class="form-control" id="visitDate" required>
+                </div>
+                <!--Champ heure-->
+                <div class="col">
+                    <input type="time" class="form-control" id="visitHour" required>
+                </div>
+                <div class="col">
+                    <button type="submit" class="btn btn-primary">Ajouter</button>
+                </div>
+        </div>
+        </form>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+
+</body>
+
+</html>

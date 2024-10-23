@@ -97,34 +97,10 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
                     <button type="button" class="btn btn-danger" id="confirmDelete">Supprimer</button>
+
                 </div>
             </div>
         </div>
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-    <script>
-        // Gestion de la modale de suppression
-        $('#deleteModal').on('show.bs.modal', function (event) {
-            var button = $(event.relatedTarget); // Bouton qui a déclenché la modale
-            var username = button.data('username'); // Extraire les informations du data-* attribute
-            var modal = $(this);
-            modal.find('#deleteUser').text(username); // Insérer le nom de l'utilisateur dans la modale
-
-            // Si l'utilisateur confirme la suppression
-            $('#confirmDelete').off('click').on('click', function () {
-                // Effectuer la suppression (appel à votre backend par exemple)
-                console.log('Suppression de l\'utilisateur : ' + username);
-
-                // Fermer la modale après la suppression
-                modal.modal('hide');
-            });
-        });
-    </script>
-
 </body>
 
 </html>
