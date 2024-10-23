@@ -8,7 +8,7 @@ $('#contactForm').on('submit', function (event) {
     const message = $('#message').val();
 
     // Logique pour envoyer les données à un serveur
-    // Cette partie serait normalement gérée par une API
+    // Cette partie serait gérée par une API
     if (name && email && subject && message) {
         // Simuler l'envoi du message
         $('#confirmation-message').text("Votre message a été envoyé avec succès !").show();

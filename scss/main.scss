@@ -33,40 +33,62 @@ footer {
     margin-left: 10px;
     
     }
+
     .lion-scene {
       position: relative;
       margin-bottom: 15px;
-  
-      &::before {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background-image: url(../node_modules/images/LionScene.jpg);
-          background-size: cover; /* L'image couvrira le conteneur */
-          background-position: center; /* Centrer l'image de fond */
-          background-repeat: no-repeat; /* Empêche la répétition */
-          filter: brightness(0.8);
-          border-radius: 0%;
-          z-index: 1; /* Assurez-vous que l'image est derrière le contenu */
-      }
-  
-      * {
-          position: relative; /* Positionner les éléments devant le ::before */
-          z-index: 2; /* Mettre le contenu au-dessus de l'image de fond */
-      }
-  
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 60vh; /* Hauteur en pourcentage de la hauteur de l'écran pour être responsive */
+      max-height: 800px; /* Limiter la hauteur maximale */
+      z-index: 2;
+      overflow: hidden; /* Empêche le contenu de déborder */
+    }
+    
+    .lion-scene::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url(../node_modules/images/LionScene.jpg);
+      background-size: cover; /* L'image couvrira le conteneur */
+      background-position: center;
+      background-repeat: no-repeat;
+      filter: brightness(0.8);
+      z-index: 1;
+    }
+    
+    .lion-scene * {
+      position: relative;
+      z-index: 2;
+    }
+    
+    /* Pour les écrans plus petits */
+    @media (max-width: 768px) {
       .lion-scene {
-          height: auto ; /* Hauteur fixe, à ajuster si nécessaire */
-          display:flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          z-index: 2; /* Assurez-vous que le contenu est au-dessus de l'image */
+        height: 40vh; /* Réduire la hauteur pour les petits écrans */
       }
-  }
+    
+      .lion-scene::before {
+        background-size: contain; /* Ajuster l'image à l'écran pour les petits écrans */
+      }
+    }
+    
+    /* Pour les très petits écrans */
+    @media (max-width: 480px) {
+      .lion-scene {
+        height: 30vh; /* Encore plus petit pour les smartphones */
+      }
+    
+      .lion-scene::before {
+        background-size: contain;
+      }
+    }
+    
   
   /* Médias Queries pour mobile */
   @media (max-width: 768px) { /* Ajustez la largeur selon vos besoins */
