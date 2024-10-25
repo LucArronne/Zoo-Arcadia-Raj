@@ -16,11 +16,12 @@ export const allRoutes = [
     new Route("/contact", "contact", "/pages/contact.html", "/js/contact.js"),
     new Route("/gestionuser", "gestionuser", "/pages/gestionuser.html", "/js/gestionuser.js"),
     new Route("/employé", "employé", "/pages/employé.html", "/js/employé/employé.js"),
-    new Route("/veterinaire", "veterinaire", "/pages/veterinaire.html"),
+    
     new Route("/statistiques", "statistiques", "/pages/statistiques.html", "/js/statistiques.js"),
     new Route("/compteRendu", "compteRendu", "/pages/compteRendu.html", "/js/compteRendu.js"),
     new Route("/user2", "user2", "/pages/user2.html", "/js/user2.js"),
     new Route("/linkuser", "linkuser", "/pages/linkuser.html"),
+    new Route("/veterinaire", "veterinaire", "/pages/veterinaire.html", "/js/veterinaire.js"),
 ];
 
 //Le titre s'affiche comme ceci : Route.titre - websitename

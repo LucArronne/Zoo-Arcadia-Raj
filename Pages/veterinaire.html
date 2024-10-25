@@ -1,89 +1,81 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Espace Vétérinaire - Zoo Arcadia</title>
-
+    <title>Espace Vétérinaire</title>
 </head>
 
 <body>
-    <div class="container mt-5">
-        <h2 class="overlay-text-container text-center text-white">Espace Vétérinaire</h2>
+    <div class="container mt-5 text-white">
+        <h2>Espace Vétérinaire</h2>
+        <!-- Section pour les données recueillies -->
+        <table class="table table-bordered" id="reportTable">
+            <thead>
+                <tr>
+                    <th>Nom de l'animal</th>
+                    <th>État de santé</th>
+                    <th>Remarques du vétérinaire</th>
+                    <th>Habitats</th>
+                    <th>Remarques habitats</th>
+                    <th>Actions</th> <!-- Colonne pour le bouton de suppression -->
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Les lignes du tableau seront ajoutées dynamiquement ici -->
+            </tbody>
+        </table>
 
-        <!-- Formulaire pour remplir un compte rendu -->
-        <h4 class=" text-center text-white">Remplir un Compte Rendu</h4>
+        <h4>Remplir un Compte Rendu</h4>
         <form id="reportForm">
-            <div class="form-group">
-
-
-                <form id="addAnimal">
-                    <div class="mb-4 text-white">
-                        <label for="filterAnimal">Nom de l'Animal :</label>
-                        <select class="form-control" id="filterAnimal">
-                            <option value="all">Tous les Animaux</option>
-                            <option value="lion">Lion</option>
-                            <option value="zebre">Zèbre</option>
-                            <option value="girafe">Girafe</option>
-                            <option value="jaguar">Jaguar</option>
-                            <option value="orang_outan">Orang-outan</option>
-                            <option value="tigre">Tigre</option>
-                            <option value="loutre">Loutre</option>
-                            <option value="pelican">Pélican</option>
-                            <option value="crocodile">Crocodile</option>
-                        </select>
-                    </div>
-                    </select>
-            </div>
-            <div class="form-group text-white">
-                <label for="healthStatus">État de santé</label>
-                <textarea class="form-control" id="healthStatus" rows="3" placeholder="Décrivez l'état de santé"
-                    required></textarea>
-            </div>
-            <div class="form-group text-white">
-                <label for="vetNotes">Remarques du vétérinaire</label>
-                <textarea class="form-control" id="vetNotes" rows="3" placeholder="Ajoutez des remarques"
-                    required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Soumettre le Compte Rendu</button>
-        </form>
-
-        <!-- Section pour les avis sur les habitats -->
-        <h4 class="mt-5 text-white">Donner un Avis sur les Habitats</h4>
-        <form id="habitatReviewForm">
-            <div class="form-group text-white">
-                <label for="habitatName">Nom de l'Habitat :</label>
-
+            <div class="mb-4 text-white">
+                <label for="filterAnimal">Filtrer par Animal :</label>
                 <select class="form-control" id="filterAnimal">
-                    <option value="all">Tous les Habitats</option>
-                    <option value="lion">Savane</option>
-                    <option value="zebre">Jungle</option>
-                    <option value="girafe">Marais</option>
-                    <button type="submit" class="btn btn-primary">Soumettre l'Avis</button>
-        </form>
-        <div class="form-group">
-            <label for="vetNotesHabitat">Remarques du vétérinaire</label>
-            <textarea class="form-control" id="vetNotes" rows="3" placeholder="Ajoutez des remarques"
-                required></textarea>
-            <button type="submit" class="btn btn-primary">Soumettre le Compte Rendu</button>
+                    <option value="all">Tous les Animaux</option>
+                    <option value="lion">Lion</option>
+                    <option value="zebre">Zèbre</option>
+                    <option value="girafe">Girafe</option>
+                    <option value="jaguar">Jaguar</option>
+                    <option value="orang_outan">Orang-outan</option>
+                    <option value="tigre">Tigre</option>
+                    <option value="loutre">Loutre</option>
+                    <option value="pelican">Pélican</option>
+                    <option value="crocodile">Crocodile</option>
+                </select>
+            </div>
+            <div class="col">
+                <label for="healthStatus">État de santé</label>
+                <input type="text" class="form-control" id="healthStatus" placeholder="État de santé" required>
+            </div>
+            <div class="col">
+                <label for="vetNotes">Remarques du vétérinaire</label>
+                <input type="text" class="form-control" id="vetNotes" placeholder="Remarques du vétérinaire" required>
+            </div>
+
+            <!-- Section pour les avis sur les habitats -->
+            <h4 class="mt-5 text-white">Donner un Avis sur les Habitats</h4>
+            <form id="habitatReviewForm">
+                <div class="mb-4 text-white">
+                    <label for="filterHabitat">Filtrer par Habitat :</label>
+                    <select class="form-control" id="filterHabitat">
+                        <option value="all">Tous les Habitats</option>
+                        <option value="Savane">Savane</option>
+                        <option value="Jungle">Jungle</option>
+                        <option value="Aquarium">Marais</option>
+                    </select>
+                </div>
+
+                <div class="col">
+                    <label for="vetNotesHabitat">Remarques du vétérinaire</label>
+                    <input type="text" class="form-control" id="vetNotesHabitat" placeholder="Remarques du vétérinaire"
+                        required>
+                </div>
+                <button type="submit" class="btn btn-primary mt-3">Ajouter le Compte Rendu</button>
             </form>
 
-            <!-- Tableau des habitats existants -->
-            <table class="table table-bordered mt-4" id="userconsuptionTable">
-                <thead>
-                    <tr>
-                        <th>Nom de l'animal</th>
-                        <th>Etat de santé</th>
-                        <th>Remarques</th>
-                        <th>Habitats</th>
-                        <th>Remarques</th>
-                    </tr>
-                </thead>
-                <tbody id="userTableBody">
-                    <!-- Les utilisateurs seront ajoutés ici dynamiquement -->
-        </div>
-
+        </form>
+    </div>
 
 
 </body>
