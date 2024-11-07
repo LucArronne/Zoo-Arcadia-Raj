@@ -23,7 +23,7 @@ function checkCredentials(event) {
         switch (user.role) {
             case "admin":
                 // Redirige l'admin vers la page d'admin
-                window.location.replace("/page/index");
+                window.location.replace("/page/gestionuser.html");
                 break;
             case "employe":
                 // Redirige l'employé vers la page Employé

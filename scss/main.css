@@ -11976,7 +11976,7 @@ body {
   margin: 0 auto;
   background-image: url(../node_modules/images/texture-detail-nature-drop-closeup.jpg);
   background-size: auto;
-  max-width: 98%;
+  max-width: 100%;
   image-resolution: from-image;
 }
 
