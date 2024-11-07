@@ -27,11 +27,11 @@ function checkCredentials(event) {
                 break;
             case "employe":
                 // Redirige l'employé vers la page Employé
-                window.location.replace("/pages/user2.html");
+                window.location.replace("/Pages/user2.html");
                 break;
             case "veterinaire":
                 // Redirige le vétérinaire vers la page vétérianire
-                window.location.replace("/pages/veterinaire.html");
+                window.location.replace("/Pages/veterinaire.html");
         } 
     }
   
