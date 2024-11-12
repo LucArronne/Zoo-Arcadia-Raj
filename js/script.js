@@ -71,6 +71,19 @@ function redirectPageByRole(role) {
             window.location.replace("/veterinaire");
             break;
         default:
-            window.location.replace("/");
     }
+}
+
+if (isConnected()) {
+    document.getElementById("loginBtn").style.display = "none";
+    document.getElementById("logOutBtn").style.display = "block";
+    document.getElementById("logOutBtn").addEventListener("click", function (event) {
+        event.preventDefault();
+        eraseCookie(tokenCookieName);
+        window.location.replace("/");
+    });
+}
+else {
+    document.getElementById("loginBtn").style.display = "block";
+    document.getElementById("logOutBtn").style.display = "none";
 }
