@@ -1,48 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
+<div class="container">
+    <h2>Gestion de la Galerie de Photos - Arcadia</h2>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+    <!-- Formulaire pour ajouter des photos -->
+    <form id="photoForm">
+        <label for="photoInput">Ajouter une photo :</label>
+        <input type="file" id="photoInput" accept="image/*" required>
+        <button type="submit">Ajouter à la galerie</button>
+    </form>
 
-<body>
-    <!-- Première image-card -->
-    <div class="image-card text-white">
-        <img src="../images/food.jpg" class="rounded w-100" alt="Titre" />
-        <p class="titre-image">Titre</p>
-        <div class="action-image-buttons">
-            <button type="button" class="btn btn-outline-light" data-bs-toggle="modal"
-                data-bs-target="#EditionPhotoModal"><i class="bi bi-pencil-square"></i></button>
-            <button type="button" class="btn btn-outline-light" data-bs-toggle="modal"
-                data-bs-target="#DeletePhotoModal"><i class="bi bi-trash"></i></button>
-        </div>
-    </div>
-
-    <!-- Deuxième image-card -->
-    <div class="image-card text-white">
-        <img src="../images/food.jpg" class="rounded w-100" alt="Titre" />
-        <p class="titre-image">Titre</p>
-        <div class="action-image-buttons">
-            <button type="button" class="btn btn-outline-light" data-bs-toggle="modal"
-                data-bs-target="#EditionPhotoModal"><i class="bi bi-pencil-square"></i></button>
-            <button type="button" class="btn btn-outline-light" data-bs-toggle="modal"
-                data-bs-target="#DeletePhotoModal"><i class="bi bi-trash"></i></button>
-        </div>
-    </div>
-
-    <!-- Troisième image-card -->
-    <div class="image-card text-white">
-        <img src="../images/food.jpg" class="rounded w-100" alt="Titre" />
-        <p class="titre-image">Titre</p>
-        <div class="action-image-buttons">
-            <button type="button" class="btn btn-outline-light" data-bs-toggle="modal"
-                data-bs-target="#EditionPhotoModal"><i class="bi bi-pencil-square"></i></button>
-            <button type="button" class="btn btn-outline-light" data-bs-toggle="modal"
-                data-bs-target="#DeletePhotoModal"><i class="bi bi-trash"></i></button>
-        </div>
-    </div>
-</body>
-
-</html>
+    <!-- Section pour afficher les photos de la galerie -->
+    <div class="gallery" id="gallery"></div>
+</div>

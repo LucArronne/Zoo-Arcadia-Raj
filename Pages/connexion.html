@@ -1,34 +1,33 @@
 <!DOCTYPE html>
 <html lang="fr">
 
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion - Espace Administrateur</title>
-
+    <link rel="stylesheet" href="styles.css"> <!-- Incluez ici le chemin vers votre CSS -->
+</head>
 
 <body>
     <div class="container">
         <h2 class="text-center text-white overlay-text-container">Espace Administrateur</h2>
-        <form>
+        <form id="loginForm">
             <div class="mb-3">
                 <label for="EmailInput" class="form-label">Email</label>
                 <input type="email" class="form-control" id="EmailInput" placeholder="ID@mail.fr" name="Email" required>
                 <div class="invalid-feedback">
-                    le mail et le mot de passe ne correspondent pas
+                    Le mail et le mot de passe ne correspondent pas
                 </div>
             </div>
             <div class="mb-3">
                 <label for="PasswordInput" class="form-label">Mot de passe</label>
                 <input type="password" class="form-control" id="PasswordInput" name="password" required>
-
+            </div>
+            <div class="text-center">
+                <button type="button" class="btn btn-primary" id="btn-validation">Connexion</button>
             </div>
         </form>
-        <div class="text-center">
-            <button type="button" class="btn btn-primary" id="btnSignin">Connexion</button>
-        </div>
-
-
     </div>
 
 </html>

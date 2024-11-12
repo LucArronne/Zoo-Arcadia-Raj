@@ -1,44 +1,66 @@
-
 const mailInput = document.getElementById("EmailInput");
 const passwordInput = document.getElementById("PasswordInput");
-const btnSignin = document.getElementById("btnSignin");
+const btnValidation = document.getElementById("btn-validation");
 
-btnSignin.addEventListener("click", checkCredentials);
+btnValidation.addEventListener("click", checkCredentials);
 
-function checkCredentials(event) {
-    event.preventDefault(); // Empêche le rechargement de la page
+async function checkCredentials(event) {
+    event.preventDefault();
 
-    const credentials = [
-        { email: "Admin@mail.fr", password: "123", role: "admin" },
-        { email: "Employé@mail.fr", password: "345", role: "employe" },
-        { email: "Vétérinaire@mail.fr", password: "567", role: "veterinaire" }
-    ];
+    // Création des en-têtes
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
 
-    // Recherche si les identifiants sont valides et obtient le rôle
-    const user = credentials.find(cred => 
-        mailInput.value === cred.email && passwordInput.value === cred.password
-    );
+    // Préparation du corps de la requête avec les identifiants
+    const raw = JSON.stringify({
+        "username": mailInput.value,
+        "password": passwordInput.value
+    });
 
-    if (user) {
-        switch (user.role) {
-            case "admin":
-                // Redirige l'admin vers la page d'admin
-                window.location.replace("/Pages/gestionuser.html");
-                break;
-            case "employe":
-                // Redirige l'employé vers la page Employé
-                window.location.replace("/Pages/user2.html");
-                break;
-            case "veterinaire":
-                // Redirige le vétérinaire vers la page vétérianire
-                window.location.replace("/Pages/veterinaire.html");
-        } 
-    }
-  
-    else {
-        // Affiche une erreur et ajoute la classe d'erreur sur les champs
-        mailInput.classList.add("is-invalid");
-        passwordInput.classList.add("is-invalid");
-        alert("Identifiants incorrects");
+    const requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: raw,
+        redirect: "follow"
+    };
+
+    try {
+        const response = await fetch("http://localhost:8000/api/login", requestOptions);
+
+        if (!response.ok) {
+            throw new Error("Identifiants incorrects");
+        }
+
+        const data = await response.json();
+
+        if (data.success) {
+            switch (data.role) {
+                case "admin":
+                    window.location.replace("/Pages/gestionuser.html");
+                    break;
+                case "employe":
+                    window.location.replace("/Pages/user2.html");
+                    break;
+                case "veterinaire":
+                    window.location.replace("/Pages/veterinaire.html");
+                    alert("Bienvenue");
+                    break;
+                default:
+                    throw new Error("Rôle non reconnu");
+            }
+        } else {
+            showError("Identifiants incorrects");
+        }
+    } catch (error) {
+        showError(error.message);
     }
 }
+
+function showError(message) {
+    mailInput.classList.add("is-invalid");
+    passwordInput.classList.add("is-invalid");
+    alert(message);
+}
+
+mailInput.addEventListener("input", () => mailInput.classList.remove("is-invalid"));
+passwordInput.addEventListener("input", () => passwordInput.classList.remove("is-invalid"));
