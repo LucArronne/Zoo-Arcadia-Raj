@@ -24,6 +24,19 @@ const getRouteByUrl = (url) => {
 // Fonction pour charger le contenu de la page
 const LoadContentPage = async () => {
   var path = window.location.pathname;
+  const links = document.querySelectorAll('.nav-link'); // Select all nav links
+
+  // Remove the 'active' class from all links
+  links.forEach(link => {
+    link.classList.remove('active');
+  });
+
+  // Add 'active' class to the link that matches the current URL
+  links.forEach(link => {
+    if (link.getAttribute('href') === path || (path === '/' && link.getAttribute('href') === '/')) {
+      link.classList.add('active');
+    }
+  });
   if (path === '/index.html') {
     path = '/';
   }
