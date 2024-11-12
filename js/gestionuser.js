@@ -1,6 +1,6 @@
-const token = getToken();
+const accessToken = getToken();
 const myHeaders = new Headers();
-myHeaders.append("Authorization", "bearer " + token);
+myHeaders.append("Authorization", "bearer " + accessToken);
 
 async function getUserList() {
     const requestOptions = {
