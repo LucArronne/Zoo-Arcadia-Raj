@@ -21,11 +21,12 @@ async function checkCredentials(event) {
         method: "POST",
         headers: myHeaders,
         body: raw,
-        redirect: "follow"
+        redirect: "manual", // Gère manuellement les redirections pour inspection
+        credentials: "include"
     };
 
     try {
-        const response = await fetch("http://127.0.0.1:8000/api/login", requestOptions, { mode: "no-cors" });
+        const response = await fetch("https://localhost:8000/api/login", requestOptions);
 
         if (!response.ok) {
             throw new Error("Identifiants incorrects");
@@ -33,23 +34,35 @@ async function checkCredentials(event) {
 
         const data = await response.json();
 
-        if (data.success) {
-            switch (data.role) {
-                case "admin":
-                    window.location.replace("/Pages/gestionuser.html");
-                    break;
-                case "employe":
-                    window.location.replace("/Pages/user2.html");
-                    break;
-                case "veterinaire":
-                    window.location.replace("/Pages/veterinaire.html");
-                    alert("Bienvenue");
-                    break;
-                default:
-                    throw new Error("Rôle non reconnu");
-            }
-        } else {
-            showError("Identifiants incorrects");
+        const token = data.token;
+
+        setToken(token);
+
+        // Split the JWT into its three parts (header, payload, signature)
+        const parts = token.split('.');
+
+        // Decode the payload (second part of the token)
+        const payload = parts[1];
+
+        // Decode from Base64 URL encoding to Base64
+        const base64 = payload.replace(/-/g, '+').replace(/_/g, '/');
+
+        // Decode the Base64 string to a UTF-8 string
+        const decoded = JSON.parse(atob(base64));
+
+        switch (decoded.roles[0]) {
+            case "ROLE_ADMIN":
+                window.location.replace("/gestionuser");
+                break;
+            case "ROLE_EMPLOYE":
+                window.location.replace("/user2");
+                break;
+            case "ROLE_VETERNARY":
+                window.location.replace("/veterinaire");
+                alert("Bienvenue");
+                break;
+            default:
+                throw new Error("Rôle non reconnu");
         }
     } catch (error) {
         showError(error.message);
@@ -57,8 +70,6 @@ async function checkCredentials(event) {
 }
 
 function showError(message) {
-    mailInput.classList.add("is-invalid");
-    passwordInput.classList.add("is-invalid");
     alert(message);
 }
 
