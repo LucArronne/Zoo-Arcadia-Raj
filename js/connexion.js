@@ -25,7 +25,7 @@ async function checkCredentials(event) {
     };
 
     try {
-        const response = await fetch("http://localhost:8000/api/login", requestOptions);
+        const response = await fetch("http://127.0.0.1:8000/api/login", requestOptions, { mode: "no-cors" });
 
         if (!response.ok) {
             throw new Error("Identifiants incorrects");
