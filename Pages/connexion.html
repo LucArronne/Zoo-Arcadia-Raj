@@ -11,21 +11,18 @@
 
 <body>
     <div class="container">
-        <h2 class="text-center text-white overlay-text-container">Espace Membre du personnel</h2>
+        <h2 class="text-center text-white overlay-text-container mt-3">Espace Membre du personnel</h2>
         <form id="loginForm">
             <div class="mb-3">
                 <label for="EmailInput" class="form-label">Email</label>
-                <input type="email" class="form-control" id="EmailInput" placeholder="ID@mail.fr" name="Email" required>
-                <div class="invalid-feedback">
-                    Le mail et le mot de passe ne correspondent pas
-                </div>
+                <input type="email" class="form-control" id="EmailInput" placeholder="Email" name="Email" required>
             </div>
             <div class="mb-3">
                 <label for="PasswordInput" class="form-label">Mot de passe</label>
                 <input type="password" class="form-control" id="PasswordInput" name="password" required>
             </div>
             <div class="text-center">
-                <button type="button" class="btn btn-primary" id="btn-validation">Connexion</button>
+                <button type="submit" class="btn btn-primary" id="btn-validation">Connexion</button>
             </div>
         </form>
     </div>

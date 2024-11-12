@@ -1,7 +1,7 @@
 const tokenCookieName = "accesstoken";
 
 function setToken(token) {
-    setCookie(tokenCookieName, token, 7);
+    setCookie(tokenCookieName, token, 1);
 }
 
 function getToken() {
@@ -34,17 +34,43 @@ function eraseCookie(name) {
 }
 
 
-
-function setToken(token) {
-    setCookie(tokenCookieName, token, 7);
-}
-
-
 function isConnected() {
     if (getToken() == null || getToken == undefined) {
         return false;
     }
     else {
         return true;
+    }
+}
+
+function getRoleInToken(token) {
+    // Split the JWT into its three parts (header, payload, signature)
+    const parts = token.split('.');
+
+    // Decode the payload (second part of the token)
+    const payload = parts[1];
+
+    // Decode from Base64 URL encoding to Base64
+    const base64 = payload.replace(/-/g, '+').replace(/_/g, '/');
+
+    // Decode the Base64 string to a UTF-8 string
+    const decoded = JSON.parse(atob(base64));
+
+    return decoded.roles[0];
+}
+
+function redirectPageByRole(role) {
+    switch (role) {
+        case "ROLE_ADMIN":
+            window.location.replace("/gestionuser");
+            break;
+        case "ROLE_EMPLOYE":
+            window.location.replace("/user2");
+            break;
+        case "ROLE_VETERNARY":
+            window.location.replace("/veterinaire");
+            break;
+        default:
+            window.location.replace("/");
     }
 }
