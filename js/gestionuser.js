@@ -1,40 +1,145 @@
-//fonction pour ajouter un nouvel utilisateur
-document.getElementById('addconsumptionTable').addEventListener('submit', function(event) {
-event.preventDefault(); // Empêcher le rechargement de la page lors de la soumission du formulaire
+const token = getToken();
+const myHeaders = new Headers();
+myHeaders.append("Authorization", "bearer " + token);
 
-//recuperer les valeurs du formulaire
-var userName = document.getElementById('userName').value;
-var password = document.getElementById('password').value;
-var role = document.getElementById('role').value;
+async function getUserList() {
+    const requestOptions = {
+        method: "GET",
+        headers: myHeaders,
+        redirect: "follow"
+    };
 
-//creer une nouvelle ligne dans le tableau
-var table = document.getElementById('userconsuptionTable').getElementsByTagName('tbody')[0];
-var newRow = table.insertRow();
+    fetch("https://localhost:8000/api/admin/users", requestOptions)
+        .then((response) => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                alert(`HTTP error! Status: ${response.status}`);
+            }
+        })
+        .then((result) => {
+            var tableBody = document.getElementById('userconsuptionTable').getElementsByTagName('tbody')[0];
+            tableBody.innerHTML = "";
+            result.forEach(element => {
+                showUser(element);
+            });
+        })
+        .catch((error) => {
+            alert("Error fetching data:", error);
+        });
 
-//ajouter les cellules à la ligne
-var userCell = newRow.insertCell(0);
-var passwordCell = newRow.insertCell(1);
-var roleCell = newRow.insertCell(2);
-var actionCell = newRow.insertCell(3); // Cellule pour le bouton "Action"
+}
 
-//remplir les cellules avec les données
-userCell.textContent = userName;
-passwordCell.textContent = password;
-roleCell.textContent = role;
+async function addUser() {
 
-//ajouter les boutons de suppression à la nouvelle ligne
-var deleteBtn = document.createElement('button');
-deleteBtn.classList.add('btn', 'btn-danger', 'btn-sm');
-deleteBtn.textContent = 'Supprimer';
+    var email = document.getElementById('userMail').value;
+    var password = document.getElementById('password').value;
+    var name = document.getElementById('userName').value;
+    var role = document.getElementById('role').value;
 
-   deleteBtn.onclick = function() {
-    if (confirm("voulez-vous supprimer cette entrée")){
-        newRow.remove();
-
+    const userObject = {
+        "email": email,
+        "password": password,
+        "role": role
+    };
+    if (name != null && name.trim() !== "") {
+        userObject["name"] = name;
     }
-};
 
-actionCell.appendChild(deleteBtn);
+    const jsonObject = JSON.stringify(userObject);
 
-document.getElementById('addconsumptionTable').reset();
+    const requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: jsonObject,
+        redirect: "follow"
+    };
+
+    fetch("https://localhost:8000/api/admin/users", requestOptions)
+        .then((response) => {
+
+            if (response.status === 201) {
+                return response.json();
+            } else {
+                alert(`HTTP error! Status: ${response.status}`);
+            }
+        })
+        .then((result) => {
+            showUser(result);
+        })
+        .catch((error) => {
+            alert("Error fetching data:", error);
+        });
+}
+
+async function deleteUser(userId, row) {
+
+    const requestOptions = {
+        method: "DELETE",
+        headers: myHeaders,
+        redirect: "follow"
+    };
+
+    fetch("https://localhost:8000/api/admin/users/" + userId, requestOptions)
+        .then((response) => {
+            if (response.status === 204) {
+                row.remove();
+            } else {
+                alert(`HTTP error! Status: ${response.status}`);
+            }
+        })
+        .catch((error) => {
+            alert("Error fetching data:", error);
+        });
+}
+
+
+
+function showUser(user) {
+    //creer une nouvelle ligne dans le tableau
+    var table = document.getElementById('userconsuptionTable').getElementsByTagName('tbody')[0];
+    var newRow = table.insertRow();
+
+    //ajouter les cellules à la ligne
+    var userCell = newRow.insertCell(0);
+    var emailCell = newRow.insertCell(1);
+    var roleCell = newRow.insertCell(2);
+    var actionCell = newRow.insertCell(3); // Cellule pour le bouton "Action"
+
+    //remplir les cellules avec les données
+    userCell.textContent = user.name;
+    emailCell.textContent = user.email;
+    roleCell.textContent = user.role.name;
+
+    //ajouter les boutons de modification à la nouvelle ligne
+    var updateBtn = document.createElement('button');
+    updateBtn.classList.add('btn', 'btn-success', 'btn-sm', 'me-2');
+    updateBtn.textContent = 'Modifier';
+
+    updateBtn.onclick = function () {
+        /// TODO 
+    };
+
+    actionCell.appendChild(updateBtn);
+
+    //ajouter les boutons de suppression à la nouvelle ligne
+    var deleteBtn = document.createElement('button');
+    deleteBtn.classList.add('btn', 'btn-danger', 'btn-sm',);
+    deleteBtn.textContent = 'Supprimer';
+
+    deleteBtn.onclick = function () {
+        if (confirm("Voulez-vous supprimer cette entrée")) {
+            deleteUser(user.id, newRow);
+        }
+    };
+
+    actionCell.appendChild(deleteBtn);
+}
+
+getUserList();
+
+//fonction pour ajouter un nouvel utilisateur
+document.getElementById('addconsumptionTable').addEventListener('submit', function (event) {
+    event.preventDefault(); // Empêcher le rechargement de la page lors de la soumission du formulaire
+    addUser();
 });
