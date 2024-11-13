@@ -76,5 +76,20 @@ const routeEvent = (event) => {
 window.onpopstate = LoadContentPage;
 // Assignation de la fonction routeEvent à la propriété route de la fenêtre
 window.route = routeEvent;
+if (isConnected()) {
+  const role = getRoleInToken(getToken());
+  switch (role) {
+    case "ROLE_ADMIN":
+      window.history.pushState({}, "", "/gestionuser");
+      break;
+    case "ROLE_EMPLOYE":
+      window.history.pushState({}, "", "/user2");
+      break;
+    case "ROLE_VETERNARY":
+      window.history.pushState({}, "", "/veternaire");
+      break;
+    default:
+  }
+}
 // Chargement du contenu de la page au chargement initial
 LoadContentPage();
