@@ -42,10 +42,6 @@ async function checkCredentials(event) {
         redirectPageByRole(role);
 
     } catch (error) {
-        showError(error.message);
+        alert(error.message);
     }
-}
-
-function showError(message) {
-    alert(message);
 }

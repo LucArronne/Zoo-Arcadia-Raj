@@ -14,7 +14,7 @@ async function getUserList() {
             if (response.ok) {
                 return response.json();
             } else {
-                alert(`HTTP error! Status: ${response.status}`);
+                throw new Error(`HTTP Status: ${response.status}`);
             }
         })
         .then((result) => {
@@ -25,7 +25,7 @@ async function getUserList() {
             });
         })
         .catch((error) => {
-            alert("Error fetching data:", error);
+            alert("Error fetching data, " + error.message);
         });
 
 }
@@ -61,14 +61,14 @@ async function addUser() {
             if (response.status === 201) {
                 return response.json();
             } else {
-                alert(`HTTP error! Status: ${response.status}`);
+                throw new Error(`HTTP Status: ${response.status}`);
             }
         })
         .then((result) => {
             showUser(result);
         })
         .catch((error) => {
-            alert("Error fetching data:", error);
+            alert("Error fetching data, " + error.message);
         });
 }
 
@@ -85,11 +85,11 @@ async function deleteUser(userId, row) {
             if (response.status === 204) {
                 row.remove();
             } else {
-                alert(`HTTP error! Status: ${response.status}`);
+                throw new Error(`HTTP Status: ${response.status}`);
             }
         })
         .catch((error) => {
-            alert("Error fetching data:", error);
+            alert("Error fetching data, " + error.message);
         });
 }
 
