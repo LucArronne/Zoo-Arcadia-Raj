@@ -77,7 +77,6 @@ window.onpopstate = LoadContentPage;
 // Assignation de la fonction routeEvent à la propriété route de la fenêtre
 window.route = routeEvent;
 if (isConnected()) {
-  console.log("djjjdf");
   const role = getRoleInToken(getToken());
   switch (role) {
     case "ROLE_ADMIN":
