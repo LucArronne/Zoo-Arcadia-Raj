@@ -45,20 +45,3 @@ async function checkCredentials(event) {
         alert(error.message);
     }
 }
-function redirectPageByRole(role) {
-    // Redirige l'utilisateur selon son rôle
-    switch (role) {
-        case "ROLE_ADMIN":
-            window.location.href = "/gestionuser";
-            break;
-        case "ROLE_EMPLOYEE":
-            window.location.href = "/avis";
-            break;
-        case "ROLE_VETERNARY":
-            window.location.href = "/veterinaire";
-            break;
-        default:
-            alert("Rôle non autorisé.");
-            break;
-    }
-}

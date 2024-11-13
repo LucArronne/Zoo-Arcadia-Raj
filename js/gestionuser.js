@@ -55,7 +55,7 @@ async function addUser() {
         redirect: "follow"
     };
 
-    fetch("https://localhost:8000/api/admin/users", requestOptions)
+    fetch(apiUrl + "admin/users", requestOptions)
         .then((response) => {
 
             if (response.status === 201) {

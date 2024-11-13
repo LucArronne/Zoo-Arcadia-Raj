@@ -62,15 +62,17 @@ function getRoleInToken(token) {
 function redirectPageByRole(role) {
     switch (role) {
         case "ROLE_ADMIN":
-            window.location.replace("/gestionuser");
+            window.location.href = ("/gestionuser");
             break;
         case "ROLE_EMPLOYE":
-            window.location.replace("/user2");
+            window.location.href = ("/user2");
             break;
         case "ROLE_VETERNARY":
-            window.location.replace("/veterinaire");
+            window.location.href = "/veterinaire";
             break;
         default:
+            alert("Rôle non autorisé.");
+            break;
     }
 }
 
