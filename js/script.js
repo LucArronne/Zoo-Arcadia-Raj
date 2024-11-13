@@ -62,11 +62,11 @@ function getRoleInToken(token) {
 function redirectPageByRole(role) {
     switch (role) {
         case "ROLE_ADMIN":
-            window.location.href = ("/gestionuser");
+            window.location.href = "/gestionuser";
             break;
-        case "ROLE_EMPLOYE":
-            window.location.href = ("/user2");
-            break;
+        case "ROLE_EMPLOYEE":
+            window.location.href = "/user2";
+            break
         case "ROLE_VETERNARY":
             window.location.href = "/veterinaire";
             break;
