@@ -8,6 +8,6 @@ $whitening: #ffffff;
 $dark: #926D27;
 $font-family-sans-serif: 'Roboto', sans-serif !default;
 
-@import "../assets/bootstrap/scss/bootstrap";
+@import "../node_modules/bootstrap/scss/bootstrap";
 
 // Then add additional custom code here
