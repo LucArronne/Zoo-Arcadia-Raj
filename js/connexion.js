@@ -25,7 +25,7 @@ async function checkCredentials(event) {
     };
 
     try {
-        const response = await fetch("https://localhost:8000/api/login", requestOptions);
+        const response = await fetch(apiUrl + "login", requestOptions);
 
         if (!response.ok) {
             throw new Error("Identifiants incorrects");

@@ -1,4 +1,5 @@
 const tokenCookieName = "accesstoken";
+const apiUrl = "https://localhost:8000/api/";
 
 function setToken(token) {
     setCookie(tokenCookieName, token, 1);

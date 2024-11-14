@@ -9,7 +9,7 @@ async function getUserList() {
         redirect: "follow"
     };
 
-    fetch("https://localhost:8000/api/admin/users", requestOptions)
+    fetch(apiUrl + "admin/users", requestOptions)
         .then((response) => {
             if (response.ok) {
                 return response.json();
@@ -80,7 +80,7 @@ async function deleteUser(userId, row) {
         redirect: "follow"
     };
 
-    fetch("https://localhost:8000/api/admin/users/" + userId, requestOptions)
+    fetch(apiUrl + "admin/users/" + userId, requestOptions)
         .then((response) => {
             if (response.status === 204) {
                 row.remove();
