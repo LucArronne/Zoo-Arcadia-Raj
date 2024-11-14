@@ -12178,6 +12178,11 @@ p {
   background-image: "url(../assets/images/texture-detail-nature-drop-closeup.jpg)";
 }
 
+.service-list-home {
+  padding: 40px 20px;
+  background-color: #2cd61d;
+}
+
 .service-list h2, .service-list .h2 {
   text-align: center;
   margin-bottom: 30px;
