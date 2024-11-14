@@ -1,4 +1,3 @@
-const apiUrl = 'https://127.0.0.1:8000/api/home/services'; 
 
  const requestOptions = {
      method: 'GET',  
@@ -10,7 +9,7 @@ const apiUrl = 'https://127.0.0.1:8000/api/home/services';
 
  // Fonction pour récupérer et afficher les services
  function loadServices() {
-     fetch(apiUrl, requestOptions)
+     fetch(apiUrl + "home/services", requestOptions)
          .then(response => {
              if (!response.ok) {
                  throw new Error('Erreur réseau');
