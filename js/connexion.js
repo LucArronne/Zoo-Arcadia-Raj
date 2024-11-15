@@ -10,7 +10,7 @@ async function checkCredentials(event) {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
-    // Préparation du corps de la requête avec les identifiants
+    
     const raw = JSON.stringify({
         "username": mailInput.value,
         "password": passwordInput.value

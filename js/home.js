@@ -66,16 +66,58 @@ function loadServicesSequentially() {
             </article>
         `;
 
-        // Afficher le service dans le conteneur
+        // Affiche le service dans le conteneur
         serviceContainer.innerHTML = serviceCard;
 
         // Passer au service suivant
         currentIndex++;
     };
 
-    // Afficher un service toutes les 2 secondes
+    // Affiche un service toutes les 2 secondes
     setInterval(loadNextService, 2000);
 }
 
 // Charger les services lors du démarrage de la page
 window.onload = fetchServices;
+
+
+
+
+//Avis des Client(e)s
+
+fetch(`${apiUrl}home/comments`, requestOptions)
+    .then(response => {
+        console.log('Response Status:', response.status);
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(avis => {
+        console.log('API Result:', avis);
+        const avisPage = document.getElementById('avisPage');
+        avisPage.innerHTML = ''; // Clear the loading text
+
+        avis.forEach(avisItem => {
+            if (avisItem.visible) {
+                const avisCard = `
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title">${avisItem.pseudo}</h5>
+                                <p class="card-text">${avisItem.text}</p>
+                                <p class="text-muted">${new Date(avisItem.createdAt).toLocaleDateString()}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                avisPage.innerHTML += avisCard;
+            }
+        });
+
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        document.getElementById('avisPage').innerHTML = '<div class="alert alert-danger">Erreur lors de la récupération des avis</div>';
+    });
+
