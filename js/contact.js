@@ -17,7 +17,7 @@ document.getElementById('contactForm').addEventListener('submit', function(event
         }),
     };
 
-    fetch(apiUrl + 'home/comments', requestOptions)
+    fetch(apiUrl + , requestOptions)// je dois mettre un API correspendant***********************
         .then(response => response.json())
         .then(data => {
             // Afficher un message de confirmation

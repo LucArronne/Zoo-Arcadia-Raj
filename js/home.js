@@ -148,3 +148,55 @@ fetch(`${apiUrl}home/comments`, requestOptions)
     });
 
 
+
+
+    //Laisser un avis 
+    document.getElementById('reviewForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+    
+        const username = document.getElementById('username').value;
+        const rating = document.getElementById('rating').value;
+        const review = document.getElementById('review').value;
+    
+        const apiUrl = 'https://127.0.0.1:8000/api/';
+        const requestOptions = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                pseudo: username,
+                text: review,
+                rating: rating
+            }),
+        };
+    
+        fetch(`${apiUrl}home/comments`, requestOptions)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Erreur réseau');
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Afficher un message de confirmation
+                const confirmationMessage = document.createElement('div');
+                confirmationMessage.className = 'alert alert-success mt-3';
+                confirmationMessage.textContent = 'Merci pour votre avis !';
+                document.getElementById('reviewForm').appendChild(confirmationMessage);
+    
+                // Réinitialiser le formulaire
+                document.getElementById('reviewForm').reset();
+    
+                // Masquer le message d'erreur s'il était affiché
+                document.getElementById('error-message').style.display = 'none';
+    
+                console.log('Success:', data);
+            })
+            .catch((error) => {
+                // Afficher le message d'erreur
+                document.getElementById('error-message').style.display = 'block';
+                console.error('Error:', error);
+            });
+    });
+    
