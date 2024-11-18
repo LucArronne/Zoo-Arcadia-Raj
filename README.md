@@ -1,6 +1,6 @@
 # Arcadia Zoo Application
 
-Bienvenue dans le projet Arcadia, une application web conçue pour gérer et présenter les informations du zoo Arcadia, mettant en avant son engagement écologique et ses services uniques.
+Bienvenue dans le projet Arcadia, une application web conçue pour gérer et présenter les informations du zoo Arcadia, mettant en avant son engagement écologique et ses services .
 
 ## Prérequis
 
