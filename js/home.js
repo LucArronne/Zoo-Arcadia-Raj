@@ -54,7 +54,7 @@ function loadServicesSequentially() {
     // Fonction pour afficher le prochain service
     const loadNextService = () => {
         if (currentIndex >= services.length) {
-            currentIndex = 0; // Réinitialiser l'index pour recommencer à partir du début
+            currentIndex = 0; 
         }
 
         const service = services[currentIndex];
@@ -85,6 +85,9 @@ window.onload = fetchServices;
 
 //Avis des Client(e)s
 
+let currentPage = 1;
+const itemsPerPage = 3;
+
 fetch(`${apiUrl}home/comments`, requestOptions)
     .then(response => {
         console.log('Response Status:', response.status);
@@ -98,26 +101,50 @@ fetch(`${apiUrl}home/comments`, requestOptions)
         const avisPage = document.getElementById('avisPage');
         avisPage.innerHTML = ''; // Clear the loading text
 
-        avis.forEach(avisItem => {
-            if (avisItem.visible) {
-                const avisCard = `
-                    <div class="col-md-4">
-                        <div class="card mb-4 shadow-sm">
-                            <div class="card-body">
-                                <h5 class="card-title">${avisItem.pseudo}</h5>
-                                <p class="card-text">${avisItem.text}</p>
-                                <p class="text-muted">${new Date(avisItem.createdAt).toLocaleDateString()}</p>
+        // Fonction pour afficher les avis de la page actuelle
+        function renderPage(page) {
+            const start = (page - 1) * itemsPerPage;
+            const end = start + itemsPerPage;
+            const avisToDisplay = avis.slice(start, end);
+
+            avisPage.innerHTML = ''; // Clear the current content
+
+            avisToDisplay.forEach(avisItem => {
+                if (avisItem.visible) {
+                    const avisCard = `
+                        <div class="col-md-4">
+                            <div class="card mb-4 shadow-sm">
+                                <div class="card-body">
+                                    <h5 class="card-title">${avisItem.pseudo}</h5>
+                                    <p class="card-text">${avisItem.text}</p>
+                                    <p class="text-muted">${new Date(avisItem.createdAt).toLocaleDateString()}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                `;
-                avisPage.innerHTML += avisCard;
+                    `;
+                    avisPage.innerHTML += avisCard;
+                }
+            });
+
+            // Afficher ou masquer le bouton "Next"
+            if (end < avis.length) {
+                const nextButton = document.createElement('button');
+                nextButton.textContent = 'Voir plus d\'avis';
+                nextButton.className = 'btn btn-primary mt-4';
+                nextButton.addEventListener('click', () => {
+                    currentPage++;
+                    renderPage(currentPage); // Afficher la page suivante
+                });
+                avisPage.appendChild(nextButton);
             }
-        });
+        }
+
+        renderPage(currentPage); // Afficher la première page d'avis
 
     })
     .catch(error => {
         console.error('Error:', error);
         document.getElementById('avisPage').innerHTML = '<div class="alert alert-danger">Erreur lors de la récupération des avis</div>';
     });
+
 
