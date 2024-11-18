@@ -12,7 +12,7 @@ Avant de commencer, assurez-vous d'avoir installé les éléments suivants sur v
 - Un éditeur de texte tel que **Visual Studio Code**
 - **Postman** (optionnel) pour tester les API si nécessaire
 
-## Étapes pour déployer l'application en local
+## Étapes pour  lancer le site en local
 
 ### 1. Cloner le dépôt
 
@@ -38,7 +38,7 @@ CREATE DATABASE
 Importer le fichier MySQL
 
 ```bash
-mysql -u votre-utilisateur -p arcadia_zoo < arcadia_zoo.sql
+mysql -u votre-utilisateur -p zoodb < zoodb.sql
 ```
 -Installer Xampp (derniere version de préference pour l'integration de php 8.1 ou supérieur)
 
@@ -50,7 +50,8 @@ Composer : Gestionnaire de dépendances PHP
 ```
 symfony -v
 ```
-
+ - configurer les variables d'environement dans le fichier env symfony
+ 
 - lancer Symfony 
 ```bash
 symfony serve
