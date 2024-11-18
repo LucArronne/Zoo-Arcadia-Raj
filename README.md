@@ -46,14 +46,16 @@ Installer Symphony
 PHP : Version 8.1 ou supérieure.
 Composer : Gestionnaire de dépendances PHP
 
-- lancer Symfony 
-```bash
-symfony serve
-```
 - verifier l'installation 
 ```
 symfony -v
 ```
+
+- lancer Symfony 
+```bash
+symfony serve
+```
+
 - Tester l'application
 - L'application sera disponible à l'adresse : http://localhost:3000.
 * Accédez à l'application depuis votre navigateur pour vérifier le bon fonctionnement des différentes fonctionnalités.
