@@ -1,7 +1,7 @@
 // Fonction pour valider un avis
 function validateReview(button) {
     // Rechercher la ligne du tableau correspondant à l'avis
-    var row = button.closest('tr');
+    let row = button.closest('tr');
     // Message de confirmation
     if (confirm("Voulez-vous vraiment valider cet avis ?")) {
         // Suppression de la ligne du tableau (l'avis validé)
@@ -14,7 +14,7 @@ function validateReview(button) {
 // Fonction pour supprimer un avis
 function deleteReview(button) {
     // Rechercher la ligne du tableau correspondant à l'avis
-    var row = button.closest('tr');
+    let row = button.closest('tr');
     // Message de confirmation
     if (confirm("Voulez-vous vraiment supprimer cet avis ?")) {
         // Suppression de la ligne du tableau (l'avis supprimé)
@@ -29,20 +29,20 @@ document.getElementById('addFoodConsumptionForm').addEventListener('submit', fun
     event.preventDefault(); // Empêcher le rechargement de la page lors de la soumission du formulaire
 
     // Récupérer les valeurs du formulaire
-    var foodType = document.getElementById('foodType').value;
-    var quantity = document.getElementById('quantity').value; // Correction de 'quantconity'
-    var visitDate = document.getElementById('visitDate').value;
-    var visitHour = document.getElementById('visitHour').value;
+    let foodType = document.getElementById('foodType').value;
+    let quantity = document.getElementById('quantity').value; // Correction de 'quantconity'
+    let visitDate = document.getElementById('visitDate').value;
+    let visitHour = document.getElementById('visitHour').value;
 
     // Créer une nouvelle ligne dans le tableau
-    var table = document.getElementById('consumptionTable').getElementsByTagName('tbody')[0];
-    var newRow = table.insertRow();
+    let table = document.getElementById('consumptionTable').getElementsByTagName('tbody')[0];
+    let newRow = table.insertRow();
 
     // Ajouter les cellules à la ligne
-    var foodCell = newRow.insertCell(0);
-    var quantityCell = newRow.insertCell(1);
-    var dateCell = newRow.insertCell(2);
-    var actionCell = newRow.insertCell(3);
+    let foodCell = newRow.insertCell(0);
+    let quantityCell = newRow.insertCell(1);
+    let dateCell = newRow.insertCell(2);
+    let actionCell = newRow.insertCell(3);
 
     // Remplir les cellules avec les données
     foodCell.textContent = foodType;
@@ -50,7 +50,7 @@ document.getElementById('addFoodConsumptionForm').addEventListener('submit', fun
     dateCell.textContent = visitDate + ' à ' + visitHour;
 
     // Ajouter les boutons de suppression à la nouvelle ligne
-    var deleteBtn = document.createElement('button');
+    let deleteBtn = document.createElement('button');
     deleteBtn.classList.add('btn', 'btn-danger', 'btn-sm');
     deleteBtn.textContent = 'Supprimer';
     deleteBtn.onclick = function() {

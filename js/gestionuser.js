@@ -32,10 +32,10 @@ async function getUserList() {
 
 async function addUser() {
 
-    var email = document.getElementById('userMail').value;
-    var password = document.getElementById('password').value;
-    var name = document.getElementById('userName').value;
-    var role = document.getElementById('role').value;
+    let email = document.getElementById('userMail').value;
+    let password = document.getElementById('password').value;
+    let name = document.getElementById('userName').value;
+    let role = document.getElementById('role').value;
 
     const userObject = {
         "email": email,
@@ -97,14 +97,14 @@ async function deleteUser(userId, row) {
 
 function showUser(user) {
     //creer une nouvelle ligne dans le tableau
-    var table = document.getElementById('userconsuptionTable').getElementsByTagName('tbody')[0];
-    var newRow = table.insertRow();
+    let table = document.getElementById('userconsuptionTable').getElementsByTagName('tbody')[0];
+    let newRow = table.insertRow();
 
     //ajouter les cellules à la ligne
-    var userCell = newRow.insertCell(0);
-    var emailCell = newRow.insertCell(1);
-    var roleCell = newRow.insertCell(2);
-    var actionCell = newRow.insertCell(3); // Cellule pour le bouton "Action"
+    let userCell = newRow.insertCell(0);
+    let emailCell = newRow.insertCell(1);
+    let roleCell = newRow.insertCell(2);
+    let actionCell = newRow.insertCell(3); // Cellule pour le bouton "Action"
 
     //remplir les cellules avec les données
     userCell.textContent = user.name;
@@ -112,7 +112,7 @@ function showUser(user) {
     roleCell.textContent = user.role.name;
 
     //ajouter les boutons de modification à la nouvelle ligne
-    var updateBtn = document.createElement('button');
+    let updateBtn = document.createElement('button');
     updateBtn.classList.add('btn', 'btn-success', 'btn-sm', 'me-2');
     updateBtn.textContent = 'Modifier';
 
@@ -123,7 +123,7 @@ function showUser(user) {
     actionCell.appendChild(updateBtn);
 
     //ajouter les boutons de suppression à la nouvelle ligne
-    var deleteBtn = document.createElement('button');
+    let deleteBtn = document.createElement('button');
     deleteBtn.classList.add('btn', 'btn-danger', 'btn-sm',);
     deleteBtn.textContent = 'Supprimer';
 

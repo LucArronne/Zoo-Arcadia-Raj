@@ -23,7 +23,7 @@ const getRouteByUrl = (url) => {
 
 // Fonction pour charger le contenu de la page
 const LoadContentPage = async () => {
-  var path = window.location.pathname;
+  let path = window.location.pathname;
   const links = document.querySelectorAll('.nav-link'); // Select all nav links
 
   // Remove the 'active' class from all links
@@ -50,7 +50,7 @@ const LoadContentPage = async () => {
   // Ajout du contenu JavaScript
   if (actualRoute.pathJS != "") {
     // Création d'une balise script
-    var scriptTag = document.createElement("script");
+    let scriptTag = document.createElement("script");
     scriptTag.setAttribute("type", "text/javascript");
     scriptTag.setAttribute("src", actualRoute.pathJS);
 
