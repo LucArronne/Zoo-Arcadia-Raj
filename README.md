@@ -80,7 +80,7 @@ symfony serve
 * Accédez à l'application depuis votre navigateur pour vérifier le bon fonctionnement des différentes fonctionnalités.
 * Utilisez des outils comme Postman pour tester les routes API si besoin.
 
-- En cas de problème
+En cas de problème
 Serveur ou variables non configurés :
 
 Vérifiez que votre fichier .env.local contient les bonnes informations de connexion à la base de données zoodb.
