@@ -82,12 +82,19 @@ symfony serve
 
 - En cas de problème
 Serveur ou variables non configurés :
+
 Vérifiez que votre fichier .env.local contient les bonnes informations de connexion à la base de données zoodb.
+
 Dépendances manquantes :
+
 Relancez composer install.
+
 Base de données :
+
 Vérifiez que la base a bien été importée avec les données attendues (zoodb.sql).
+
 Cache Symfony :
+
 Supprimez le cache avec :
 ```
 php bin/console cache:clear
