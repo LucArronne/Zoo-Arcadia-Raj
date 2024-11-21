@@ -18,14 +18,17 @@ Avant de commencer, assurez-vous d'avoir installé les éléments suivants sur v
 
 Clonez ces dépôts sur votre machine locale à l'aide de la commande suivante :
 
-```bash
-git clone (https://github.com/LucArronne/Zoo-Arcadia-Raj.git)
-https://github.com/LucArronne/zoo_api
+```
+git clone https://github.com/LucArronne/Zoo-Arcadia-Raj.git
+```
+```
+git clone https://github.com/LucArronne/zoo_api
+```
 
 ````
 Accédez au dossier du projet :
 
-```bash
+```
 cd Zoo-Arcadia
 ```
 - Configurer la base de données
@@ -36,13 +39,13 @@ lancer Apache et MySQL
 Assurez-vous que votre serveur MySQL est en cours d'exécution.
 Créez une base de données pour l'application :
 
-```bash
+```
 CREATE DATABASE
 
 ```
 Importer le fichier MySQL
 
-```bash
+```
 mysql -u votre-utilisateur -p zoodb < zoodb.sql
 ```
 
@@ -68,7 +71,7 @@ DATABASE_URL="mysql://votre_utilisateur:votre_mot_de_passe@127.0.0.1:3306/zoodb"
 Vérifiez que la base a bien été importée avec les données attendues (zoodb.sql).
  
 - lancer Symfony 
-```bash
+```
 symfony serve
 ```
 
