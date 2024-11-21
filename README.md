@@ -10,6 +10,7 @@ Avant de commencer, assurez-vous d'avoir installé les éléments suivants sur v
 - **Git** pour cloner le projet
 - **MySQL**  pour la gestion des données
 - Un éditeur de texte tel que **Visual Studio Code** (optionnel)
+  * utile pour installer l'extension php serveur afin de lancer en local
 - **Postman** (optionnel) pour tester les API si nécessaire
 
 ## Étapes pour  lancer le site en local
