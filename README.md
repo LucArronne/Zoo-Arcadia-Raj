@@ -16,10 +16,11 @@ Avant de commencer, assurez-vous d'avoir installé les éléments suivants sur v
 
 ### 1. Cloner le dépôt
 
-Clonez ce dépôt sur votre machine locale à l'aide de la commande suivante :
+Clonez ces dépôts sur votre machine locale à l'aide de la commande suivante :
 
 ```bash
 git clone (https://github.com/LucArronne/Zoo-Arcadia-Raj.git)
+https://github.com/LucArronne/zoo_api
 
 ````
 Accédez au dossier du projet :
@@ -28,6 +29,10 @@ Accédez au dossier du projet :
 cd Zoo-Arcadia
 ```
 - Configurer la base de données
+-Installer Xampp (derniere version de préference pour l'integration de php 8.1 ou supérieur)
+-lancer en tant qu'administrateur
+lancer Apache et MySQL
+
 Assurez-vous que votre serveur MySQL est en cours d'exécution.
 Créez une base de données pour l'application :
 
@@ -40,7 +45,6 @@ Importer le fichier MySQL
 ```bash
 mysql -u votre-utilisateur -p zoodb < zoodb.sql
 ```
--Installer Xampp (derniere version de préference pour l'integration de php 8.1 ou supérieur)
 
 Installer Symphony
 PHP : Version 8.1 ou supérieure.
