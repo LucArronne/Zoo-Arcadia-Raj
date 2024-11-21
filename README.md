@@ -50,7 +50,18 @@ Composer : Gestionnaire de dépendances PHP
 ```
 symfony -v
 ```
+Installer les dépendances du projet avec composer 
+````
+composer install
+````
  - configurer les variables d'environement dans le fichier env symfony
+
+Dupliquez le fichier .env et renommez-le .env.local.
+Modifiez le fichier .env.local pour ajouter vos identifiants MySQL
+```
+DATABASE_URL="mysql://votre_utilisateur:votre_mot_de_passe@127.0.0.1:3306/zoodb"
+```
+Vérifiez que la base a bien été importée avec les données attendues (zoodb.sql).
  
 - lancer Symfony 
 ```bash
