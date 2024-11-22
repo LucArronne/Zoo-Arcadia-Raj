@@ -45,10 +45,10 @@ function isConnected() {
 }
 
 function getRoleInToken(token) {
-    // Split the JWT into its three parts (header, payload, signature)
+    // Diviser jwt en 3 parties(header, payload, signature)
     const parts = token.split('.');
 
-    // Decode the payload (second part of the token)
+    // Décoder la charge utile (second part of the token)
     const payload = parts[1];
 
     // Decode from Base64 URL encoding to Base64
