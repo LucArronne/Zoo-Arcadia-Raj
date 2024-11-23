@@ -12,7 +12,7 @@ fetch(apiUrl + "home/habitats", requestOptions)
     })
     .then(data => {
         const habitatList = document.getElementById('habitat-list');
-        habitatList.innerHTML = ''; // Assurez-vous que le conteneur est vide avant d'ajouter les cartes.
+        habitatList.innerHTML = ''; 
 
         if (!data || !Array.isArray(data)) {
             throw new Error('Data format incorrect: expecting an array');
@@ -40,3 +40,6 @@ fetch(apiUrl + "home/habitats", requestOptions)
         const habitatList = document.getElementById('habitat-list');
         habitatList.innerHTML = '<p>Erreur de chargement des habitats.</p>';
     });
+
+
+    
