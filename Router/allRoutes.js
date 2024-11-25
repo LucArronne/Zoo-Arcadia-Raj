@@ -6,7 +6,7 @@ export const allRoutes = [
     new Route("/service", "Les Services", "/Pages/service.html", "/js/service.js"),
 
     new Route("/habitats", "Les Habitats", "/Pages/habitats.html", "/js/habitats.js"),
-    new Route("/habitat-savane", "habitat-savane", "/Pages/habitat-savane.html"),
+    new Route("/habitat-savane", "habitat-savane", "/Pages/habitat-savane.html", "/js/habitat-savane.js"),
     new Route("/habitat-jungle", "habitat-jungle", "/Pages/habitat-jungle.html", "/js/habitat-jungle.js"),
     new Route("/habitat-marais", "habitat-marais", "/Pages/habitat-marais.html"),
     new Route("/restauration", "restauration", "/Pages/restauration.html"),
