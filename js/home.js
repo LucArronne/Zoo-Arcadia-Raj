@@ -115,7 +115,6 @@ function loadServicesSequentially() {
         
         currentIndex++;
     };
-
     setInterval(loadNextService, 2000);
 }
 
