@@ -45,16 +45,16 @@ function isConnected() {
 }
 
 function getRoleInToken(token) {
-    // Diviser jwt en 3 parties(header, payload, signature)
+    
     const parts = token.split('.');
 
-    // Décoder la charge utile (second part of the token)
+    
     const payload = parts[1];
 
-    // Decode from Base64 URL encoding to Base64
+   
     const base64 = payload.replace(/-/g, '+').replace(/_/g, '/');
 
-    // Decode the Base64 string to a UTF-8 string
+   
     const decoded = JSON.parse(atob(base64));
 
     return decoded.roles[0];

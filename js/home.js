@@ -57,7 +57,7 @@ let services = [];
 let currentIndex = 0;
 let isFetching = false;
 
-// Fonction pour récupérer les services une seule fois et les stocker dans un tableau
+
 function fetchServices() {
     if (isFetching) return;
     isFetching = true;
@@ -70,7 +70,7 @@ function fetchServices() {
             return response.json();
         })
         .then(data => {
-            services = shuffleArray(data); // Mélange les services
+            services = shuffleArray(data); // Mélange 
             isFetching = false;
             loadServicesSequentially(); // Commence à afficher les services un par un
         })
@@ -81,7 +81,7 @@ function fetchServices() {
         });
 }
 
-// Fonction pour mélanger les services
+
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -94,7 +94,7 @@ function shuffleArray(array) {
 function loadServicesSequentially() {
     const serviceContainer = document.getElementById('service-list-home');
 
-    // Fonction pour afficher le prochain service
+  //next service
     const loadNextService = () => {
         if (currentIndex >= services.length) {
             currentIndex = 0; 
@@ -109,18 +109,18 @@ function loadServicesSequentially() {
             </article>
         `;
 
-        // Affiche le service dans le conteneur
+       
         serviceContainer.innerHTML = serviceCard;
 
-        // Passer au service suivant
+        
         currentIndex++;
     };
 
-    // Affiche un service toutes les 2 secondes
+    /
     setInterval(loadNextService, 2000);
 }
 
-// Charger les services lors du démarrage de la page
+
 window.onload = fetchServices;
 
 
@@ -142,7 +142,7 @@ fetch(`${apiUrl}home/comments`, requestOptions)
     .then(avis => {
         console.log('API Result:', avis);
         const avisPage = document.getElementById('avisPage');
-        avisPage.innerHTML = ''; // Clear the loading text
+        avisPage.innerHTML = ''; 
 
         // Fonction pour afficher les avis de la page actuelle
         function renderPage(page) {
@@ -169,14 +169,14 @@ fetch(`${apiUrl}home/comments`, requestOptions)
                 }
             });
 
-            // Afficher ou masquer le bouton "Next"
+           // Afficher la page suivante
             if (end < avis.length) {
                 const nextButton = document.createElement('button');
                 nextButton.textContent = 'Voir plus d\'avis';
                 nextButton.className = 'btn btn-primary mt-4';
                 nextButton.addEventListener('click', () => {
                     currentPage++;
-                    renderPage(currentPage); // Afficher la page suivante
+                    renderPage(currentPage); 
                 });
                 avisPage.appendChild(nextButton);
             }

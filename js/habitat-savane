@@ -23,12 +23,12 @@ fetch(apiUrl + "home/animals", requestOptions)
             throw new Error("Les données ne sont pas dans le bon format !");
         }
 
-        // Parcourir et afficher les animaux
+   
         data.forEach((animal) => {
             const animalCard = document.createElement("article");
             animalCard.classList.add("habitat-card");
 
-            // Crée le contenu HTML
+            // contenu HTML
             animalCard.innerHTML = `
                 <img src="${animal.images[0]?.path || 'default.jpg'}" alt="Animal : ${animal.name}">
                 <h3 class="overlay-text-container text-primary">${animal.name}</h3>

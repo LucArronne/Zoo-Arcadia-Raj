@@ -20,7 +20,7 @@ async function checkCredentials(event) {
         method: "POST",
         headers: myHeaders,
         body: raw,
-        redirect: "manual", // Gère manuellement les redirections pour inspection
+        redirect: "manual", // Gère manuellement les redirections 
         credentials: "include"
     };
 

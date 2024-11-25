@@ -1,14 +1,13 @@
 document.getElementById('reportForm').addEventListener('submit', function(event) {
     event.preventDefault();
 
-    // Récupérer les valeurs des champs de formulaire
+    
     let animal = document.getElementById('filterAnimal').value;
     let healthStatus = document.getElementById('healthStatus').value;
     let vetNotes = document.getElementById('vetNotes').value;
     let habitat = document.getElementById('filterHabitat').value;
     let vetNotesHabitat = document.getElementById('vetNotesHabitat').value;
 
-    // Récupérer le tableau cible et insérer une nouvelle ligne
     let table = document.getElementById('reportTable').getElementsByTagName('tbody')[0];
     let newRow = table.insertRow();
 
@@ -27,7 +26,7 @@ document.getElementById('reportForm').addEventListener('submit', function(event)
     habitatCell.textContent = habitat;
     vetNotesHabitatCell.textContent = vetNotesHabitat;
 
-    // Ajouter le bouton de suppression  
+ 
     let deleteBtn = document.createElement('button');
     deleteBtn.classList.add('btn', 'btn-danger', 'btn-sm');
     deleteBtn.textContent = 'Supprimer';
@@ -40,6 +39,6 @@ document.getElementById('reportForm').addEventListener('submit', function(event)
 
     actionCell.appendChild(deleteBtn);
 
-    // Réinitialiser uniquement le formulaire de compte rendu
+    // Réinitialiserle formulaire 
     document.getElementById('reportForm').reset();
 });
