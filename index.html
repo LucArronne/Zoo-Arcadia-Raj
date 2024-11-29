@@ -5,35 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="scss/main.css">
-
     <title>Zoo ARCADIA</title>
 </head>
 
 <body>
-
     <header>
-
-
         <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="primary">
             <div class="logo">
                 <img src="./assets/images/Logo.jpg" alt="logo du Zoo">
             </div>
             <div class="container-fluid">
                 <a class="navbar-brand text-white " href="#">ZOO ARCADIA</a>
-
-
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-
-                <!-- Menu de navigation Admin-->
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/">Acceuil</a>
+                            <a class="nav-link active" aria-current="page" href="/">Accueil</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/service">Services</a>
@@ -44,50 +36,55 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/contact">Contact</a>
                         </li>
-                        <li class="nav-item" id="loginBtn">
+                        <li class="nav-item" id="loginBtn" data-show="disconnected">
                             <a class="nav-link" href="/connexion">Connexion</a>
                         </li>
-                        <li class="nav-item" id="logOutBtn">
-                            <a class="nav-link" href="#">Deconnexion</a>
+                        <li class="nav-item" id="logOutBtn" data-show="connected">
+                            <a class="nav-link" href="#">Déconnexion</a>
+                        </li>
+                        <!-- Admin menu, hidden if not logged in or if user is not an admin -->
+                        <li class="nav-item" id="adminMenu" data-show="admin">
+                            <a class="nav-link" href="/gestionuser">Gestion des utilisateurs</a>
+                        </li>
+                        <!-- Employee menu, hidden if not logged in or if user is not an employee -->
+                        <li class="nav-item" id="employeeMenu" data-show="employee">
+                            <a class="nav-link" href="/user2">Espace Employé</a>
+                        </li>
+                        <!-- Veterinary menu, hidden if not logged in or if user is not a vet -->
+                        <li class="nav-item" id="vetMenu" data-show="veterinary">
+                            <a class="nav-link" href="/veterinaire">Espace Vétérinaire</a>
                         </li>
                     </ul>
                 </div>
+            </div>
         </nav>
     </header>
-
-
-
-
 
     <main id="main-page">
         <!--contenu de la page-->
     </main>
 
-
     <footer class="bg-dark text-white text-center py-4">
         <div class="container">
             <div class="row">
-                <!-- Section Horaires -->
                 <div class="col-12 col-lg-4">
                     <h3>Horaires d'ouverture</h3>
                     <p class="text-white">Du Lundi au Vendredi de 9h à 18h</p>
                 </div>
-
-                <!-- Section Téléphone -->
                 <div class="col-6 col-lg-4">
                     <h3>Téléphone</h3>
                     <p class="text-white">01008030407</p>
                 </div>
-
-                <!-- Section Droits réservés -->
                 <div class="col-6 col-lg-4">
                     <p class="text-white">&copy; 2024 Zoo Arcadia. Tous droits réservés.</p>
                 </div>
             </div>
         </div>
-
-        <!-- Scripts -->
-        <script src="/js/script.js"></script>
-        <script type="module" src="Router/router.js"></script>
-        <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     </footer>
+
+    <script src="/js/script.js"></script>
+    <script type="module" src="Router/router.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
