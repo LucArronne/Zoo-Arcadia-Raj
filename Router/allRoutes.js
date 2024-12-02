@@ -2,7 +2,7 @@ import Route from "./Route.js";
 
 export const allRoutes = [
     // Routes accessibles à tout le monde
-    new Route("/", "Accueil", "/Pages/home.html", "/js/home.js", ["disconnected", "connected"]),
+    new Route("/", "Accueil", "/Pages/home.html", "/js/home.js", ["disconnected"]),
     new Route("/service", "Les Services", "/Pages/service.html", "/js/service.js", ["disconnected"]),
     new Route("/habitats", "Les Habitats", "/Pages/habitats.html", "/js/habitats.js", ["disconnected"]),
     new Route("/habitat-savane", "habitat-savane", "/Pages/habitat-savane.html", "/js/habitat-savane.js", ["disconnected"]),
