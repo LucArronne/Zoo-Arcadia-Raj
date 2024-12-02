@@ -1,20 +1,19 @@
 import Route from "./Route.js";
 
-// Définir ici vos routes avec gestion des rôles et des connexions
 export const allRoutes = [
     // Routes accessibles à tout le monde
-    new Route("/", "Accueil", "/Pages/home.html", "/js/home.js", ["disconnected", "client"]),
-    new Route("/service", "Les Services", "/Pages/service.html", "/js/service.js", ["disconnected", "client"]),
-    new Route("/habitats", "Les Habitats", "/Pages/habitats.html", "/js/habitats.js", ["disconnected", "client"]),
-    new Route("/habitat-savane", "habitat-savane", "/Pages/habitat-savane.html", "/js/habitat-savane.js", ["disconnected", "client"]),
-    new Route("/habitat-jungle", "habitat-jungle", "/Pages/habitat-jungle.html", "/js/habitat-jungle.js", ["disconnected", "client"]),
-    new Route("/habitat-marais", "habitat-marais", "/Pages/habitat-marais.html", ["disconnected", "client" ]),
-    new Route("/restauration", "restauration", "/Pages/restauration.html", ["disconnected", "client" ]),
-    new Route("/petit-train", "petit-train", "/Pages/petit-train.html", ["disconnected", "client" ]),
-    new Route("/guide", "guide", "/Pages/guide.html", ["disconnected", "client", "admin"]),
+    new Route("/", "Accueil", "/Pages/home.html", "/js/home.js", ["disconnected"]),
+    new Route("/service", "Les Services", "/Pages/service.html", "/js/service.js", ["disconnected"]),
+    new Route("/habitats", "Les Habitats", "/Pages/habitats.html", "/js/habitats.js", ["disconnected"]),
+    new Route("/habitat-savane", "habitat-savane", "/Pages/habitat-savane.html", "/js/habitat-savane.js", ["disconnected"]),
+    new Route("/habitat-jungle", "habitat-jungle", "/Pages/habitat-jungle.html", "/js/habitat-jungle.js", ["disconnected"]),
+    new Route("/habitat-marais", "habitat-marais", "/Pages/habitat-marais.html", "/js/habitat-marais.js"["disconnected"]),
+    new Route("/restauration", "restauration", "/Pages/restauration.html", ["disconnected"]),
+    new Route("/petit-train", "petit-train", "/Pages/petit-train.html", ["disconnected"]),
+    new Route("/guide", "guide", "/Pages/guide.html", ["disconnected"]),
     new Route("/connexion", "connexion", "/Pages/connexion.html", "/js/connexion.js", ["disconnected"]),
-    new Route("/avis", "avis", "/Pages/avis.html", "/js/avis.js", ["disconnected", "client", ]),
-    new Route("/contact", "contact", "/Pages/contact.html", "/js/contact.js", ["disconnected", "client", ]),
+    new Route("/avis", "avis", "/Pages/avis.html", "/js/avis.js", ["disconnected"]),
+    new Route("/contact", "contact", "/Pages/contact.html", "/js/contact.js", ["disconnected"]),
 
     // Routes réservées aux administrateurs (seulement accessible par les admins)
     new Route("/gestionuser", "gestionuser", "/Pages/gestionuser.html", "/js/gestionuser.js", ["admin"]),
