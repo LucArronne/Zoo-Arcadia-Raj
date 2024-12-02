@@ -2,12 +2,12 @@ import Route from "./Route.js";
 
 export const allRoutes = [
     // Routes accessibles à tout le monde
-    new Route("/", "Accueil", "/Pages/home.html", "/js/home.js", ["disconnected"]),
+    new Route("/", "Accueil", "/Pages/home.html", "/js/home.js", ["disconnected", "connected"]),
     new Route("/service", "Les Services", "/Pages/service.html", "/js/service.js", ["disconnected"]),
     new Route("/habitats", "Les Habitats", "/Pages/habitats.html", "/js/habitats.js", ["disconnected"]),
     new Route("/habitat-savane", "habitat-savane", "/Pages/habitat-savane.html", "/js/habitat-savane.js", ["disconnected"]),
     new Route("/habitat-jungle", "habitat-jungle", "/Pages/habitat-jungle.html", "/js/habitat-jungle.js", ["disconnected"]),
-    new Route("/habitat-marais", "habitat-marais", "/Pages/habitat-marais.html", "/js/habitat-marais.js"["disconnected"]),
+    new Route("/habitat-marais", "habitat-marais", "/Pages/habitat-marais.html", "/js/habitat-marais.js", ["disconnected"]),
     new Route("/restauration", "restauration", "/Pages/restauration.html", ["disconnected"]),
     new Route("/petit-train", "petit-train", "/Pages/petit-train.html", ["disconnected"]),
     new Route("/guide", "guide", "/Pages/guide.html", ["disconnected"]),
@@ -22,7 +22,7 @@ export const allRoutes = [
     new Route("/employé", "employé", "/Pages/employé.html", "/js/employé/employé.js", ["employee"]),
     
     // Routes accessibles aux utilisateurs connectés ou admin
-    new Route("/galerie", "galerie", "/Pages/galerie.html", [], ["disconnected", "client", "admin"]),
+    new Route("/galerie", "galerie", "/Pages/galerie.html", [], ["connected", "admin"]),
     new Route("/statistiques", "statistiques", "/Pages/statistiques.html", "/js/statistiques.js", ["admin"]),
     new Route("/compteRendu", "compteRendu", "/Pages/compteRendu.html", "/js/compteRendu.js", ["admin"]),
     
