@@ -82,7 +82,21 @@ function updateMenu() {
         // Affichage des menus en fonction du rôle
         toggleMenuItem("adminMenu", role === "ROLE_ADMIN");
         toggleMenuItem("employeeMenu", role === "ROLE_EMPLOYEE");
-        toggleMenuItem("vetMenu", role === "ROLE_VETERNARY");
+        toggleMenuItem("vetMenu", role === "ROLE_VETERINARY");
+
+        // Masquer les pages Contact, Habitats, Service, Accueil pour les administrateurs, employés et vétérinaires
+        if (role === "ROLE_ADMIN" || role === "ROLE_EMPLOYEE" || role === "ROLE_VETERINARY") {
+            toggleMenuItem("contact", false);
+            toggleMenuItem("habitats", false);
+            toggleMenuItem("service", false);
+            toggleMenuItem("home", false);  // Page d'accueil
+        } else {
+            // Afficher ces pages si l'utilisateur n'est pas un admin, employé, ou vétérinaire
+            toggleMenuItem("contact", true);
+            toggleMenuItem("habitats", true);
+            toggleMenuItem("service", true);
+            toggleMenuItem("home", true);  // Page d'accueil
+        }
 
         // Rediriger vers la page appropriée si l'utilisateur n'est pas sur la page d'accueil ou la page de connexion
         if (window.location.pathname === "/connexion" || window.location.pathname === "/") {
@@ -99,6 +113,12 @@ function updateMenu() {
         toggleMenuItem("adminMenu", false);
         toggleMenuItem("employeeMenu", false);
         toggleMenuItem("vetMenu", false);
+
+        // Afficher les pages comme "Contact", "Habitats", etc. pour les visiteurs
+        toggleMenuItem("contact", true);
+        toggleMenuItem("habitats", true);
+        toggleMenuItem("service", true);
+        toggleMenuItem("home", true);  // Page d'accueil
     }
 }
 
@@ -115,7 +135,7 @@ function redirectPageByRole(role) {
                 window.location.href = "/user2";
             }
             break;
-        case "ROLE_VETERNARY":
+        case "ROLE_VETERINARY":
             if (window.location.pathname !== "/veterinaire") {
                 window.location.href = "/veterinaire";
             }
