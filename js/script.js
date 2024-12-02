@@ -46,15 +46,18 @@ function isConnected() {
 
 // Fonction pour extraire le rôle de l'utilisateur depuis le token
 function getRoleInToken(token) {
+    if (!token) {
+        return null;
+    }
     try {
         const parts = token.split('.');
         const payload = parts[1];
         const base64 = payload.replace(/-/g, '+').replace(/_/g, '/');
         const decoded = JSON.parse(atob(base64));
-        return decoded.roles[0];  // Exemple : 'ROLE_ADMIN', 'ROLE_EMPLOYEE', etc.
+        return decoded.roles ? decoded.roles[0] : null;  // Vérification si 'roles' existe
     } catch (e) {
         console.error("Erreur lors de la récupération du rôle depuis le token:", e);
-        return null;  // Si le token est invalide ou malformé
+        return null;
     }
 }
 
@@ -86,16 +89,16 @@ function updateMenu() {
 
         // Masquer les pages Contact, Habitats, Service, Accueil pour les administrateurs, employés et vétérinaires
         if (role === "ROLE_ADMIN" || role === "ROLE_EMPLOYEE" || role === "ROLE_VETERINARY") {
-            toggleMenuItem("contact", false);
-            toggleMenuItem("habitats", false);
+            toggleMenuItem("home", false);
             toggleMenuItem("service", false);
-            toggleMenuItem("home", false);  // Page d'accueil
+            toggleMenuItem("habitats", false);
+            toggleMenuItem("contact", false);  
         } else {
             // Afficher ces pages si l'utilisateur n'est pas un admin, employé, ou vétérinaire
-            toggleMenuItem("contact", true);
-            toggleMenuItem("habitats", true);
+            toggleMenuItem("home", true);
             toggleMenuItem("service", true);
-            toggleMenuItem("home", true);  // Page d'accueil
+            toggleMenuItem("habitats", true);
+            toggleMenuItem("contact", true);  // Page d'accueil
         }
 
         // Rediriger vers la page appropriée si l'utilisateur n'est pas sur la page d'accueil ou la page de connexion
@@ -115,28 +118,29 @@ function updateMenu() {
         toggleMenuItem("vetMenu", false);
 
         // Afficher les pages comme "Contact", "Habitats", etc. pour les visiteurs
-        toggleMenuItem("contact", true);
-        toggleMenuItem("habitats", true);
+        toggleMenuItem("home", true);
         toggleMenuItem("service", true);
-        toggleMenuItem("home", true);  // Page d'accueil
+        toggleMenuItem("habitats", true);
+        toggleMenuItem("contact", true);  // Page d'accueil
     }
 }
 
 // Fonction pour rediriger l'utilisateur en fonction de son rôle
 function redirectPageByRole(role) {
+    const currentPath = window.location.pathname;
     switch (role) {
         case "ROLE_ADMIN":
-            if (window.location.pathname !== "/gestionuser") {
+            if (currentPath !== "/gestionuser") {
                 window.location.href = "/gestionuser";
             }
             break;
         case "ROLE_EMPLOYEE":
-            if (window.location.pathname !== "/user2") {
+            if (currentPath !== "/user2") {
                 window.location.href = "/user2";
             }
             break;
         case "ROLE_VETERINARY":
-            if (window.location.pathname !== "/veterinaire") {
+            if (currentPath !== "/veterinaire") {
                 window.location.href = "/veterinaire";
             }
             break;
@@ -151,6 +155,3 @@ document.getElementById("logOutBtn")?.addEventListener("click", function () {
     eraseCookie(tokenCookieName);  // Supprimer le cookie du token
     window.location.replace("/");   // Rediriger vers la page d'accueil
 });
-
-// Initialiser l'affichage du menu lors du chargement de la page
-window.onload = updateMenu;
