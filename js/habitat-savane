@@ -1,62 +1,86 @@
-
-
-
-
 const requestOptions = {
     method: "GET",
     redirect: "follow",
 };
 
-
-fetch(apiUrl + "home/animals", requestOptions)
-    .then((response) => {
+fetch(apiUrl + "home/habitats", requestOptions)
+    .then(response => {
         if (!response.ok) {
-            throw new Error(`Erreur HTTP ! Statut : ${response.status}`);
+            throw new Error(`HTTP error! Status: ${response.status}`);
         }
         return response.json();
     })
-    .then((data) => {
-        const habitatList = document.getElementById("habitat-list");
-        habitatList.innerHTML = ""; 
+    .then(data => {
+        const habitatList = document.getElementById('habitat-list');
+        habitatList.innerHTML = ''; 
 
         if (!data || !Array.isArray(data)) {
-            throw new Error("Les données ne sont pas dans le bon format !");
+            throw new Error('Data format incorrect: expecting an array');
         }
 
-   
-        data.forEach((animal) => {
-            const animalCard = document.createElement("article");
-            animalCard.classList.add("habitat-card");
+        data.forEach(habitat => {
+            // Vérifiez si une image est disponible
+            const imageUrl = habitat.images.length > 0 ? habitat.images[0].path : 'default-image.jpg';
 
-            // contenu HTML
-            animalCard.innerHTML = `
-                <img src="${animal.images[0]?.path || 'default.jpg'}" alt="Animal : ${animal.name}">
-                <h3 class="overlay-text-container text-primary">${animal.name}</h3>
-                <div class="description">
-                    <p>Race : ${animal.race.name}</p>
-                    <p>Habitat : ${animal.habitats || "Non spécifié"}</p>
-                    <h3 class="overlay-text-container text-white text-center">Observations Vétérinaires</h3>
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>État : ${animal.state || "Non spécifié"}</th>
-                                <th>Alimentation : ${animal.food || "Non spécifié"}</th>
-                            </tr>
-                            <tr>
-                                <th>Grammage nourriture : ${animal.quantity || "Non spécifié"}</th>
-                                <th>Date de passage : ${animal.date || "Non spécifié"}</th>
-                            </tr>
-                        </thead>
-                    </table>
+            const habitatCard = document.createElement('article');
+            habitatCard.classList.add('habitat-card');
+
+            habitatCard.innerHTML = `
+                <img src="${imageUrl}" alt="Habitat de la ${habitat.name}">
+                <h3 class="overlay-text-container text-white">${habitat.name}</h3>
+                <p>${habitat.description}</p>
+                <a href="#" class="btn btn-secondary voir-details" data-id="${habitat.id}">Voir les Détails</a>
+                <div id="details-${habitat.id}" class="habitat-details" style="display: none;">
+                    <h4>Liste des animaux</h4>
+                    <ul id="animals-${habitat.id}"></ul>
                 </div>
             `;
 
-            // Ajouter la carte à la liste
-            habitatList.appendChild(animalCard);
+            habitatList.appendChild(habitatCard);
+        });
+
+        // Gestion de l'affichage des détails
+        const detailButtons = document.querySelectorAll('.voir-details');
+        detailButtons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                event.preventDefault(); // Eviter la redirection
+                const habitatId = button.getAttribute('data-id');
+                const detailsDiv = document.getElementById(`details-${habitatId}`);
+                const animalsList = document.getElementById(`animals-${habitatId}`);
+                
+                // Toggle l'affichage de la section des détails
+                detailsDiv.style.display = detailsDiv.style.display === 'none' ? 'block' : 'none';
+
+                if (detailsDiv.style.display === 'block' && !animalsList.innerHTML) {
+                    fetchAnimalsForHabitat(habitatId, animalsList);
+                }
+            });
         });
     })
-    .catch((error) => {
-        console.error("Erreur lors de la récupération des animaux :", error);
-        const habitatList = document.getElementById("habitat-list");
-        habitatList.innerHTML = "<p>Erreur de chargement des animaux.</p>";
+    .catch(error => {
+        console.error('Error fetching habitats:', error);
+        const habitatList = document.getElementById('habitat-list');
+        habitatList.innerHTML = '<p>Erreur de chargement des habitats.</p>';
     });
+
+// Fonction pour récupérer et afficher les animaux pour un habitat donné
+function fetchAnimalsForHabitat(habitatId, animalsList) {
+    const apiUrl = `http://exemple.com/api/`; // Remplacez par votre URL réelle
+    fetch(apiUrl + `home/animals?habitatId=${habitatId}`)
+        .then(response => response.json())
+        .then(animals => {
+            if (Array.isArray(animals) && animals.length > 0) {
+                animals.forEach(animal => {
+                    const animalItem = document.createElement('li');
+                    animalItem.textContent = `${animal.name} (${animal.race ? animal.race.name : 'Inconnu'})`;
+                    animalsList.appendChild(animalItem);
+                });
+            } else {
+                animalsList.innerHTML = '<li>Aucun animal trouvé pour cet habitat.</li>';
+            }
+        })
+        .catch(error => {
+            console.error('Erreur de récupération des animaux :', error);
+            animalsList.innerHTML = '<li>Erreur de chargement des animaux.</li>';
+        });
+}
