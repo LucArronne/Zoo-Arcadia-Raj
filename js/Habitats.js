@@ -1,9 +1,9 @@
-const requestOptions = {
-    method: "GET",
-    redirect: "follow",
-};
+    const requestOptions = {
+        method: "GET",
+        redirect: "follow",
+    };
 
-fetch(apiUrl + "home/habitats", requestOptions)
+    fetch(apiUrl + "home/habitats", requestOptions)
     .then(response => {
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
@@ -23,13 +23,13 @@ fetch(apiUrl + "home/habitats", requestOptions)
             const imageUrl = habitat.images.length > 0 ? habitat.images[0].path : 'default-image.jpg';
 
             const habitatCard = document.createElement('article');
-            habitatCard.classList.add('habitat-card');
+            habitatCard.classList.add('habitat-card' );
 
             habitatCard.innerHTML = `
                 <img src="${imageUrl}" alt="Habitat de la ${habitat.name}">
                 <h3 class="overlay-text-container text-white">${habitat.name}</h3>
                 <p>${habitat.description}</p>
-                <a href="/habitat/${habitat.id}" class="btn btn-secondary">Voir les Détails</a>
+                <a href="/habitat-jungle" class="btn btn-secondary">Voir les Détails</a>
             `;
 
             habitatList.appendChild(habitatCard);
@@ -40,6 +40,7 @@ fetch(apiUrl + "home/habitats", requestOptions)
         const habitatList = document.getElementById('habitat-list');
         habitatList.innerHTML = '<p>Erreur de chargement des habitats.</p>';
     });
+
 
 
     
