@@ -84,22 +84,16 @@ function updateMenu() {
 
         // Affichage des menus en fonction du rôle
         toggleMenuItem("adminMenu", role === "ROLE_ADMIN");
+        toggleMenuItem("statMenu", role === "ROLE_ADMIN");
+        toggleMenuItem("comtRendu", role === "ROLE_ADMIN");
         toggleMenuItem("employeeMenu", role === "ROLE_EMPLOYEE");
         toggleMenuItem("vetMenu", role === "ROLE_VETERINARY");
 
-        // Masquer les pages Contact, Habitats, Service, Accueil pour les administrateurs, employés et vétérinaires
-        if (role === "ROLE_ADMIN" || role === "ROLE_EMPLOYEE" || role === "ROLE_VETERINARY") {
-            toggleMenuItem("home", false);
-            toggleMenuItem("service", false);
-            toggleMenuItem("habitats", false);
-            toggleMenuItem("contact", false);  
-        } else {
-            // Afficher ces pages si l'utilisateur n'est pas un admin, employé, ou vétérinaire
-            toggleMenuItem("home", true);
-            toggleMenuItem("service", true);
-            toggleMenuItem("habitats", true);
-            toggleMenuItem("contact", true);  // Page d'accueil
-        }
+        // Masquer les pages publiques (Accueil, Services, Habitats, Contact) si l'utilisateur est connecté avec un rôle spécifique
+        toggleMenuItem("home", false);
+        toggleMenuItem("service", false);
+        toggleMenuItem("habitats", false);
+        toggleMenuItem("contact", false);
 
         // Rediriger vers la page appropriée si l'utilisateur n'est pas sur la page d'accueil ou la page de connexion
         if (window.location.pathname === "/connexion" || window.location.pathname === "/") {
@@ -114,14 +108,16 @@ function updateMenu() {
 
         // Masquer les menus spécifiques aux rôles
         toggleMenuItem("adminMenu", false);
+        toggleMenuItem("comtRendu", false);
         toggleMenuItem("employeeMenu", false);
         toggleMenuItem("vetMenu", false);
+        toggleMenuItem("statMenu", false);
 
-        // Afficher les pages comme "Contact", "Habitats", etc. pour les visiteurs
+        // Afficher les pages publiques (Accueil, Services, Habitats, Contact)
         toggleMenuItem("home", true);
         toggleMenuItem("service", true);
         toggleMenuItem("habitats", true);
-        toggleMenuItem("contact", true);  // Page d'accueil
+        toggleMenuItem("contact", true);
     }
 }
 
@@ -130,7 +126,9 @@ function redirectPageByRole(role) {
     const currentPath = window.location.pathname;
     switch (role) {
         case "ROLE_ADMIN":
-            if (currentPath !== "/statistiques") {
+            // Si l'utilisateur n'est pas déjà sur une page admin (statistiques ou gestion des utilisateurs)
+            if (currentPath !== "/statistiques" && currentPath !== "/gestionuser" &&  currentPath !== "/compteRendu") {
+                // Redirection vers la page de statistiques si ce n'est pas déjà la page en cours
                 window.location.href = "/statistiques";
             }
             break;
@@ -155,3 +153,6 @@ document.getElementById("logOutBtn")?.addEventListener("click", function () {
     eraseCookie(tokenCookieName);  // Supprimer le cookie du token
     window.location.replace("/");   // Rediriger vers la page d'accueil
 });
+
+// Appel de la fonction de mise à jour du menu lors du chargement de la page
+document.addEventListener("DOMContentLoaded", updateMenu);

@@ -25,7 +25,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item" id="home">
-                            <a class="nav-link active" aria-current="page" href="/">Accueil</a>
+                            <a class="nav-link" href="/">Accueil</a>
                         </li>
                         <li class="nav-item" id="service">
                             <a class="nav-link" href="/service">Services</a>
@@ -42,11 +42,18 @@
                         <li class="nav-item" id="logOutBtn" data-show="connected">
                             <a class="nav-link" href="#">Déconnexion</a>
                         </li>
+
                         <!-- Admin menu, hidden if not logged in or if user is not an admin -->
                         <li class="nav-item" id="adminMenu" data-show="admin">
-                            <a class="nav-link" href="/gestionuser">Gestion des utilisateurs</a>
+                            <a class="nav-link" href="/gestionuser">Administrateur</a>
                         </li>
-                        <!-- Employee menu, hidden if not logged in or if user is not an employee -->
+                        <li class="nav-item" id="statMenu" data-show="admin">
+                            <a class="nav-link" href="/statistiques">Statistiques</a>
+                        </li>
+                        <li class="nav-item" id="comtRendu" data-show="admin">
+                            <a class="nav-link" href="/compteRendu">Compte Rendu</a>
+
+                            <!-- Employee menu, hidden if not logged in or if user is not an employee -->
                         <li class="nav-item" id="employeeMenu" data-show="employee">
                             <a class="nav-link" href="/user2">Espace Employé</a>
                         </li>
