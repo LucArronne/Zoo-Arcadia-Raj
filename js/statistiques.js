@@ -21,7 +21,7 @@ async function getVisitStatistics() {
             }
         })
         .then((result) => {
-            var tableBody = document.getElementById('visitStatisticsTable').getElementsByTagName('tbody')[0];
+            let tableBody = document.getElementById('visitStatisticsTable').getElementsByTagName('tbody')[0];
             tableBody.innerHTML = "";
             result.forEach(element => {
                 showVisitStatistics(element);
