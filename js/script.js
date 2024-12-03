@@ -130,8 +130,8 @@ function redirectPageByRole(role) {
     const currentPath = window.location.pathname;
     switch (role) {
         case "ROLE_ADMIN":
-            if (currentPath !== "/gestionuser") {
-                window.location.href = "/gestionuser";
+            if (currentPath !== "/statistiques") {
+                window.location.href = "/statistiques";
             }
             break;
         case "ROLE_EMPLOYEE":
