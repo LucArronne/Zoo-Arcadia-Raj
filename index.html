@@ -15,7 +15,7 @@
                 <img src="./assets/images/Logo.jpg" alt="logo du Zoo">
             </div>
             <div class="container-fluid">
-                <a class="navbar-brand text-white " href="#">ZOO ARCADIA</a>
+                <a class="navbar-brand text-white" href="#">ZOO ARCADIA</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -39,26 +39,24 @@
                         <li class="nav-item" id="loginBtn" data-show="disconnected">
                             <a class="nav-link" href="/connexion">Connexion</a>
                         </li>
-                        <li class="nav-item" id="logOutBtn" data-show="connected">
+                        <li class="nav-item" id="logOutBtn" data-show="connected" style="display: none;">
                             <a class="nav-link" href="#">Déconnexion</a>
                         </li>
-
-                        <!-- Admin menu, hidden if not logged in or if user is not an admin -->
-                        <li class="nav-item" id="adminMenu" data-show="admin">
-                            <a class="nav-link" href="/gestionuser">Administrateur</a>
-                        </li>
-                        <li class="nav-item" id="statMenu" data-show="admin">
+                        <!-- Admin menu -->
+                        <li class="nav-item" id="statMenu" data-show="admin" style="display: none;">
                             <a class="nav-link" href="/statistiques">Statistiques</a>
                         </li>
-                        <li class="nav-item" id="comtRendu" data-show="admin">
-                            <a class="nav-link" href="/compteRendu">Compte Rendu</a>
-
-                            <!-- Employee menu, hidden if not logged in or if user is not an employee -->
-                        <li class="nav-item" id="employeeMenu" data-show="employee">
+                        <li class="nav-item" id="adminMenu" data-show="admin" style="display: none;">
+                            <a class="nav-link" href="/gestionuser">Gestion des utilisateurs</a>
+                        </li>
+                        <li class="nav-item" id="comtRendu" data-show="admin" style="display: none;">
+                            <a class="nav-link" href="/compteRendu">Comptes Rendus</a>
+                            <!-- Employee menu -->
+                        <li class="nav-item" id="employeeMenu" data-show="employee" style="display: none;">
                             <a class="nav-link" href="/user2">Espace Employé</a>
                         </li>
-                        <!-- Veterinary menu, hidden if not logged in or if user is not a vet -->
-                        <li class="nav-item" id="vetMenu" data-show="veterinary">
+                        <!-- Veterinary menu -->
+                        <li class="nav-item" id="vetMenu" data-show="veterinary" style="display: none;">
                             <a class="nav-link" href="/veterinaire">Espace Vétérinaire</a>
                         </li>
                     </ul>

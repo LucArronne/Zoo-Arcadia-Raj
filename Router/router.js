@@ -80,7 +80,10 @@ if (isConnected()) {
   const role = getRoleInToken(getToken());
   switch (role) {
     case "ROLE_ADMIN":
-      window.history.replaceState({}, "", "/gestionuser");
+      // Redirection vers "gestionuser" ou "statistiques"
+      if (window.location.pathname !== "/gestionuser" && window.location.pathname !== "/statistiques") {
+        window.history.replaceState({}, "", "/gestionuser");
+      }
       break;
     case "ROLE_EMPLOYE":
       window.history.replaceState({}, "", "/user2");
