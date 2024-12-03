@@ -16,15 +16,15 @@ export const allRoutes = [
     new Route("/contact", "contact", "/Pages/contact.html", "/js/contact.js", ["disconnected"]),
 
     // Routes réservées aux administrateurs (seulement accessible par les admins)
-    new Route("/gestionuser", "gestionuser", "/Pages/gestionuser.html", "/js/gestionuser.js", ["admin"]),
+    new Route("/gestionuser", "gestionuser", "/Pages/statistiques.html", "/js/statistiques.js", ["admin"]),
     
     // Routes réservées aux employés
     new Route("/employé", "employé", "/Pages/employé.html", "/js/employé/employé.js", ["employee"]),
     
-    // Routes accessibles aux utilisateurs connectés ou admin
-    new Route("/galerie", "galerie", "/Pages/galerie.html", [], ["connected", "admin"]),
-    new Route("/statistiques", "statistiques", "/Pages/statistiques.html", "/js/statistiques.js", ["admin"]),
+    new Route("/galerie", "galerie", "/Pages/galerie.html", [], [ "admin"]),
+    new Route("/statistiques", "statistiques", "/Pages/gestionuser.html", "/js/gestionuser.js", ["admin"]),
     new Route("/compteRendu", "compteRendu", "/Pages/compteRendu.html", "/js/compteRendu.js", ["admin"]),
+  
     
     // Page réservée à l'admin pour la gestion des utilisateurs (donc accessible uniquement par un admin)
     new Route("/user2", "user2", "/Pages/user2.html", "/js/user2.js", ["admin"]),

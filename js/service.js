@@ -28,8 +28,7 @@
                          <img src="${service.image}" alt="${service.image}">
                          <h3 class="overlay-text-container text-white">${service.name}</h3>
                          <p>${service.description}</p>
-                         <a href="${service.link}" class="btn btn-secondary">Voir les Détails</a>
-                     </article>
+                         
                  `;
                  serviceList.innerHTML += serviceCard;
              });
