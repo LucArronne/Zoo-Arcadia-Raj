@@ -29,7 +29,7 @@
                 <img src="${imageUrl}" alt="Habitat de la ${habitat.name}">
                 <h3 class="overlay-text-container text-white">${habitat.name}</h3>
                 <p>${habitat.description}</p>
-                <a href="/habitat-jungle" class="btn btn-secondary">Voir les Détails</a>
+                <a href="/habitat-savane" class="btn btn-secondary">Voir les Détails</a>
             `;
 
             habitatList.appendChild(habitatCard);
