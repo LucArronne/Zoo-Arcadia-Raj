@@ -14,6 +14,7 @@ export const allRoutes = [
     new Route("/connexion", "connexion", "/Pages/connexion.html", "/js/connexion.js", ["disconnected"]),
     new Route("/avis", "avis", "/Pages/avis.html", "/js/avis.js", ["disconnected"]),
     new Route("/contact", "contact", "/Pages/contact.html", "/js/contact.js", ["disconnected"]),
+    new Route("/habitatid", "habitatid", "/Pages/habitatid.html", "/js/habitatid.js", ["disconnected"]),
 
     // Routes réservées aux administrateurs (seulement accessibles par les admins)
     new Route("/statistiques", "statistiques", "/Pages/statistiques.html", "/js/statistiques.js", ["admin"]),
@@ -23,6 +24,7 @@ export const allRoutes = [
     
     // Routes réservées aux employés
     new Route("/user2", "user2", "/Pages/user2.html", "/js/user2.js", ["employee"]),
+    new Route("/alimentEmploye", "alimentEmploye", "/Pages/alimentEmploye.html", "/js/alimentEmploye.js", ["employee"]),
     
     // Routes vétérinaire
     new Route("/veterinaire", "veterinaire", "/Pages/veterinaire.html", "/js/veterinaire.js", ["veterinary", "admin"]),

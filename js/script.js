@@ -86,7 +86,8 @@ function updateMenu() {
         toggleMenuItem("adminMenu", role === "ROLE_ADMIN");
         toggleMenuItem("statMenu", role === "ROLE_ADMIN");
         toggleMenuItem("comtRendu", role === "ROLE_ADMIN");
-        toggleMenuItem("employeeMenu", role === "ROLE_EMPLOYEE");
+        toggleMenuItem("avisEmploye", role === "ROLE_EMPLOYEE");
+        toggleMenuItem("alimentMenu", role === "ROLE_EMPLOYEE");
         toggleMenuItem("vetMenu", role === "ROLE_VETERINARY");
 
         // Masquer les pages publiques (Accueil, Services, Habitats, Contact) si l'utilisateur est connecté avec un rôle spécifique

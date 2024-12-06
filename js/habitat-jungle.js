@@ -32,6 +32,7 @@ const requestOptions = {
                     <img src="${imageUrl}" alt="Image de ${animal.name}">
                     <h3 class="overlay-text-container text-white">${animal.name}</h3>
                     <p>Race : ${animal.race.name}</p>
+                      <a href="/habitatid" class="btn btn-secondary">Voir les Détails</a>
                     
                 `;
 
