@@ -18,7 +18,7 @@ async function getUserList() {
             }
         })
         .then((result) => {
-            var tableBody = document.getElementById('userconsuptionTable').getElementsByTagName('tbody')[0];
+            let tableBody = document.getElementById('userconsuptionTable').getElementsByTagName('tbody')[0];
             tableBody.innerHTML = "";
             result.forEach(element => {
                 showUser(element);
