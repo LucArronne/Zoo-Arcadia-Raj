@@ -75,7 +75,7 @@ Vérifiez que la base a bien été importée avec les données attendues (zoodb.
 ```
 symfony serve
 ```
-
+-
 - Tester l'application
 - L'application sera disponible à l'adresse : http://localhost:3000.
 * Accédez à l'application depuis votre navigateur pour vérifier le bon fonctionnement des différentes fonctionnalités.
@@ -85,6 +85,9 @@ En cas de problème
 Serveur ou variables non configurés :
 
 Vérifiez que votre fichier .env.local contient les bonnes informations de connexion à la base de données zoodb.
+
+Installer PHP server dans les extension vscode front-end :
+-lancer PHP server 
 
 Dépendances manquantes :
 
