@@ -1,21 +1,49 @@
 <body>
-    <div class="container mt-5 text-white">
-        <h2>Gestion des Aliments</h2>
-        <table id="foodTable" class="table table-striped table-bordered">
-            <thead>
+    <div class="container mt-4">
+        <h1 class="text-center mb-4 text-white overlay-text-container">Liste des Animaux et leurs Aliments</h1>
+
+
+        <table id="animalTable" class="table table-bordered table-striped">
+            <thead class="thead-dark">
                 <tr>
+                    <th>ID</th>
                     <th>Nom</th>
-                    <th>Quantité</th>
-                    <th>Date</th>
-                    <th>Utilisateur</th>
+                    <th>Race</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td colspan="5">Chargement des aliments...</td>
-                </tr>
+                <!-- Les lignes des animaux seront insérées ici -->
             </tbody>
         </table>
     </div>
+
+    <!-- Modal pour modifier un aliment -->
+    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editModalLabel">Modifier un Aliment</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editForm">
+                        <div class="mb-3">
+                            <label for="modalFoodName" class="form-label">Nom de l'aliment :</label>
+                            <input type="text" class="form-control" id="modalFoodName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="modalFoodQuantity" class="form-label">Quantité :</label>
+                            <input type="number" class="form-control" id="modalFoodQuantity" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <button type="button" class="btn btn-primary" id="saveChangesBtn">Sauvegarder</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
