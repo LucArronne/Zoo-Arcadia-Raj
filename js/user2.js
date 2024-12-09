@@ -81,8 +81,8 @@ async function validateReview(reviewId, row, statusCell) {
         redirect: "follow"
     };
 
-    fetch(apiUrl + "comments/{id}" + reviewId, requestOptions)
-        .then((response) => {
+    fetch(`${apiUrl}comments/${reviewId}`, requestOptions)
+            .then((response) => {
             if (response.ok) {
                 statusCell.textContent = "Validé";
                 statusCell.classList.remove("text-danger");
@@ -107,7 +107,7 @@ async function deleteReview(reviewId, row) {
         redirect: "follow"
     };
 
-    fetch(apiUrl + "home/comments/" + reviewId, requestOptions)
+    fetch(`${apiUrl}comments/${reviewId}`, requestOptions)
         .then((response) => {
             if (response.status === 204) {
                 row.remove();
