@@ -27,7 +27,7 @@ export const allRoutes = [
     new Route("/alimentEmploye", "alimentEmploye", "/Pages/alimentEmploye.html", "/js/alimentEmploye.js", ["employee"]),
     
     // Routes vétérinaire
-    new Route("/veterinaire", "veterinaire", "/Pages/veterinaire.html", "/js/veterinaire.js", ["veterinary", "admin"]),
+    new Route("/veterinaire", "veterinaire", "/Pages/veterinaire.html", "/js/veterinaire.js", ["veternary", "admin"]),
 
     // Autres routes
     new Route("/linkuser", "linkuser", "/Pages/linkuser.html", [], ["admin"]),

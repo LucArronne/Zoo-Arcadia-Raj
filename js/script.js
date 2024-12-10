@@ -138,7 +138,7 @@ function redirectPageByRole(role) {
                 window.location.href = "/user2";
             }
             break;
-        case "ROLE_VETERINARY":
+        case "ROLE_VETERNARY":
             if (currentPath !== "/veterinaire") {
                 window.location.href = "/veterinaire";
             }

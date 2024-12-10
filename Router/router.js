@@ -90,8 +90,8 @@ if (isConnected()) {
       }
       break;
     case "ROLE_VETERNARY":
-      if (window.location.pathname !== "/veternaire") {
-        window.history.replaceState({}, "", "/veternaire");
+      if (window.location.pathname !== "/veterinaire") {
+        window.history.replaceState({}, "", "/veterinaire");
       }
       break;
     // Ajoutez des cas pour d'autres rôles ici
