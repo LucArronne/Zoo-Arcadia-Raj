@@ -91,6 +91,7 @@ function fetchHabitatDetails(habitatId) {
                     <img src="${imageUrl}" alt="Image de ${animal.name}">
                     <h3 class="overlay-text-container text-white">${animal.name}</h3>
                     <p>Race : ${animal.race.name}</p>
+               <a href="#" class="btn btn-primary" onclick="incrementAnimalConsultation(${animal.id})">Voir plus</a>
                   
                 `;
                 animalsList.appendChild(animalCard);
@@ -111,3 +112,28 @@ function fetchHabitatDetails(habitatId) {
 
 // Initialiser l'affichage de la liste des habitats
 fetchHabitats();
+
+
+// incrementer le nombre de consultation d'un animal 
+function incrementAnimalConsultation(animalId) {
+    const putOptions = {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json", // Optionnel si le backend attend un corps JSON
+        },
+    };
+
+    fetch(`${apiUrl}home/animals/${animalId}`, putOptions)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Erreur HTTP : ${response.status}`);
+            }
+            console.log(`Consultation de l'animal ${animalId} mise à jour avec succès.`);
+            // Optionnel : afficher un message ou rediriger l'utilisateur
+        })
+        .catch(error => {
+            console.error('Erreur lors de la mise à jour des consultations :', error);
+        });
+}
+
+
