@@ -24,7 +24,7 @@ fetch(apiUrl + "home/habitats", requestOptions)
 
         data.forEach(habitat => {
             // Vérifiez si une image est disponible
-            const imageUrl = habitat.images.length > 0 ? habitat.images[0].path : 'default-image.jpg';
+            const imageUrl = habitat.images.length > 0 ? habitat.images[0].path : '../assets/images/Orang-outan.jpg';
 
             const habitatCard = document.createElement('article');
             habitatCard.classList.add('habitat-card');
