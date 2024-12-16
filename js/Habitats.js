@@ -114,6 +114,8 @@ function fetchHabitatDetails(habitatId) {
 fetchHabitats();
 
 
+
+
 // incrementer le nombre de consultation d'un animal 
 function incrementAnimalConsultation(animalId) {
     const putOptions = {
