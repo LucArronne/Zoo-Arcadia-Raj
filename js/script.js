@@ -86,6 +86,7 @@ function updateMenu() {
         toggleMenuItem("adminMenu", role === "ROLE_ADMIN");
         toggleMenuItem("statMenu", role === "ROLE_ADMIN");
         toggleMenuItem("comtRendu", role === "ROLE_ADMIN");
+        toggleMenuItem("rappotEmploye", role === "ROLE_ADMIN");
         toggleMenuItem("avisEmploye", role === "ROLE_EMPLOYEE");
         toggleMenuItem("alimentMenu", role === "ROLE_EMPLOYEE");
         toggleMenuItem("vetMenu", role === "ROLE_VETERINARY");
@@ -113,6 +114,7 @@ function updateMenu() {
         toggleMenuItem("employeeMenu", false);
         toggleMenuItem("vetMenu", false);
         toggleMenuItem("statMenu", false);
+        toggleMenuItem("rappotEmploye", false);
 
         // Afficher les pages publiques (Accueil, Services, Habitats, Contact)
         toggleMenuItem("home", true);
@@ -128,13 +130,13 @@ function redirectPageByRole(role) {
     switch (role) {
         case "ROLE_ADMIN":
             // Si l'utilisateur n'est pas déjà sur une page admin (statistiques ou gestion des utilisateurs)
-            if (currentPath !== "/statistiques" && currentPath !== "/gestionuser" &&  currentPath !== "/compteRendu") {
+            if (currentPath !== "/statistiques" && currentPath !== "/gestionuser" &&  currentPath !== "/compteRendu"  &&  currentPath !== "/rapportEmployeAdmin") {
                 // Redirection vers la page de statistiques si ce n'est pas déjà la page en cours
                 window.location.href = "/statistiques";
             }
             break;
         case "ROLE_EMPLOYEE":
-            if (currentPath !== "/user2") {
+            if (currentPath !== "/user2"  && currentPath !== "/alimentEmploye") {
                 window.location.href = "/user2";
             }
             break;

@@ -22,6 +22,7 @@ export const allRoutes = [
     new Route("/gestionuser", "gestionuser", "/Pages/gestionuser.html", "/js/gestionuser.js", ["admin"]),
     new Route("/compteRendu", "compteRendu", "/Pages/compteRendu.html", "/js/compteRendu.js", ["admin"]),
     new Route("/galerie", "galerie", "/Pages/galerie.html", [], ["admin"]),
+    new Route("/rapportEmployeAdmin", "rapportEmployeAdmin", "/Pages/rapportEmployeAdmin.html", "/js/rapportEmployeAdmin.js", ["admin"]),
     
     // Routes réservées aux employés
     new Route("/user2", "user2", "/Pages/user2.html", "/js/user2.js", ["employee"]),
