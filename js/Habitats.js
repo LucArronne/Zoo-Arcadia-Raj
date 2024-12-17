@@ -172,7 +172,11 @@ function displayAnimalDetails(data) {
     const modalTitle = document.getElementById('animal-name');
     const modalBody = document.getElementById('animal-details-modal');
     
-    modalTitle.textContent = `Rapport de l'animal ID: ${data.id}`;
+    // Vérifier si l'ID est défini
+    const animalId = data && data.id ? `ID: ${data.id}` : ''; // Ne pas afficher si l'ID est undefined
+
+    modalTitle.textContent = `Rapport de l'animal ${animalId}`; // Afficher l'ID si défini
+
     modalBody.innerHTML = `
         <p><strong>État :</strong> ${data.state}</p>
         <p><strong>Nourriture :</strong> ${data.food}</p>
