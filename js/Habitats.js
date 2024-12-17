@@ -1,4 +1,4 @@
-
+// Déclaration unique de requestOptions
 const requestOptions = { method: "GET", redirect: "follow" };
 
 // Fonction pour récupérer la liste des habitats
@@ -32,7 +32,7 @@ function fetchHabitats() {
                         <img src="${imageUrl}" alt="Image de l'habitat ${habitat.name}" class="habitat-image">
                         <h3 class="habitat-name">${habitat.name}</h3>
                         <p class="habitat-description">${habitat.description}</p>
-                        <a href="#" class="btn btn-primary" onclick="fetchHabitatDetails(${habitat.id})">En savoir plus</a>
+                        <a href="#" class="btn btn-primary" onclick="fetchHabitatDetails(${habitat.id}, event)">En savoir plus</a>
                     </div>
                 `;
                 habitatList.appendChild(habitatCard);
@@ -48,7 +48,9 @@ function fetchHabitats() {
 }
 
 // Fonction pour récupérer les détails d'un habitat
-function fetchHabitatDetails(habitatId) {
+function fetchHabitatDetails(habitatId, event) {
+    event.preventDefault();  // Empêcher la redirection de la page
+
     console.log(`Appel API pour l'habitat avec l'ID : ${habitatId}`);
     fetch(`${apiUrl}home/habitats/${habitatId}`, requestOptions)
         .then(response => {
@@ -91,8 +93,7 @@ function fetchHabitatDetails(habitatId) {
                     <img src="${imageUrl}" alt="Image de ${animal.name}">
                     <h3 class="overlay-text-container text-white">${animal.name}</h3>
                     <p>Race : ${animal.race.name}</p>
-               <a href="#" class="btn btn-primary" onclick="incrementAnimalConsultation(${animal.id})">Voir plus</a>
-                  
+                    <a href="#" class="btn btn-primary" onclick="incrementAnimalConsultation(${animal.id}, event)">Voir plus</a>
                 `;
                 animalsList.appendChild(animalCard);
             });
@@ -113,11 +114,10 @@ function fetchHabitatDetails(habitatId) {
 // Initialiser l'affichage de la liste des habitats
 fetchHabitats();
 
-
-
-
 // Fonction pour incrémenter le nombre de consultation d'un animal et afficher ses détails
-function incrementAnimalConsultation(animalId) {
+function incrementAnimalConsultation(animalId, event) {
+    event.preventDefault();  // Empêcher la redirection de la page
+
     const putOptions = {
         method: "PUT",
         headers: {
@@ -134,16 +134,18 @@ function incrementAnimalConsultation(animalId) {
             console.log(`Consultation de l'animal ${animalId} mise à jour avec succès.`);
 
             // Après avoir incrémenté les vues, on récupère le rapport de l'animal
-            getAnimalLastRapport(animalId);
+            getAnimalLastRapport(animalId, event);
         })
         .catch(error => {
             console.error('Erreur lors de la mise à jour des consultations :', error);
         });
 }
 
-// Fonction pour récupérer le dernier rapport d'un animal
-function getAnimalLastRapport(id) {
-    fetch(`/animals/last-rapport/${id}`)
+// Fonction pour récupérer le dernier rapport d'un animal par son ID
+function getAnimalLastRapport(id, event) {
+    event.preventDefault();  // Empêcher la redirection de la page
+
+    fetch(`${apiUrl}home/animals/last-rapport/${id}`)
         .then(response => {
             if (!response.ok) {
                 throw new Error(`Erreur HTTP : ${response.status}`);
@@ -151,7 +153,8 @@ function getAnimalLastRapport(id) {
             return response.json();
         })
         .then(data => {
-            // Affichage des détails du rapport de l'animal
+            console.log("Données du rapport de l'animal:", data); // Vérifier les données
+            // Afficher les détails du rapport de l'animal
             displayAnimalDetails(data);
         })
         .catch(error => {
@@ -163,26 +166,22 @@ function getAnimalLastRapport(id) {
         });
 }
 
-// Fonction pour afficher les détails du rapport de l'animal dans un modal
+// Fonction pour afficher les détails du rapport de l'animal dans un modal avec Bootstrap 5
 function displayAnimalDetails(data) {
     const modal = document.getElementById('animal-modal');
     const modalTitle = document.getElementById('animal-name');
     const modalBody = document.getElementById('animal-details-modal');
-
-    modalTitle.textContent = data.name;
+    
+    modalTitle.textContent = `Rapport de l'animal ID: ${data.id}`;
     modalBody.innerHTML = `
         <p><strong>État :</strong> ${data.state}</p>
         <p><strong>Nourriture :</strong> ${data.food}</p>
-        <p><strong>Quantité :</strong> ${data.quantity}</p>
+        <p><strong>Quantité :</strong> ${data.quantity} g</p>
         <p><strong>Date :</strong> ${new Date(data.date).toLocaleString()}</p>
-        <p><strong>Détails :</strong> ${data.details}</p>
-        <p><strong>Vues :</strong> ${data.views}</p>
+        <p><strong>Détails :</strong> ${data.details || "Aucun détail fourni"}</p>
     `;
-
-    // Afficher le modal
-    $(modal).modal('show');
+    
+    // Afficher le modal avec Bootstrap 5 (sans jQuery)
+    const myModal = new bootstrap.Modal(modal);
+    myModal.show();  // Affiche le modal sans changer de page
 }
-
-
-
-
