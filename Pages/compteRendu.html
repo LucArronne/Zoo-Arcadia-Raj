@@ -1,19 +1,46 @@
-html
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-<main class="container mt-4">
-    <section id="historique-comptes-rendus">
-        <h2>Historique des Comptes Rendus</h2>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Animal</th>
-                    <th>Date</th>
-                    <th>Observations</th>
-                </tr>
-            </thead>
-            <tbody id="comptes-rendus-list">
+<body>
+    <div class="container mt-5">
+        <div class="container mt-5 text-white text-center overlay-text-container">
+            <h1 class="text-center mb-4">Rapport Vétérinaire</h1>
+        </div>
+        <div class="text-white">
 
-            </tbody>
-        </table>
-    </section>
-</main>
+            <!-- Tableau pour afficher les animaux -->
+            <h4>Liste des Animaux</h4>
+            <table class="table table-striped table-bordered text-white">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nom</th>
+                    </tr>
+                </thead>
+                <tbody id="animalList">
+                    <!-- Les animaux seront insérés ici -->
+                </tbody>
+            </table>
+
+            <!-- Tableau pour afficher les rapports -->
+            <h4>Liste des Rapports</h4>
+            <table class="table table-striped table-bordered text-white">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>State</th>
+                        <th>Food</th>
+                        <th>Quantity</th>
+                        <th>Date</th>
+                        <th>Details</th>
+                        <th>User ID</th>
+                        <th>User Email</th>
+                        <th>User Role</th>
+                        <th>Animal Name</th>
+                        <th>Animal Race</th>
+                    </tr>
+                </thead>
+                <tbody id="reportContainer">
+                    <!-- Les rapports seront insérés ici -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>

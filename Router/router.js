@@ -80,7 +80,7 @@ if (isConnected()) {
   const role = getRoleInToken(getToken());
   switch (role) {
     case "ROLE_ADMIN":
-      if (!["/gestionuser", "/statistiques"].includes(window.location.pathname)) {
+      if (!["/gestionuser", "/statistiques","/compteRendu"].includes(window.location.pathname)) {
         window.history.replaceState({}, "", "/gestionuser");
       }
       break;

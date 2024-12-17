@@ -15,6 +15,7 @@ export const allRoutes = [
     new Route("/avis", "avis", "/Pages/avis.html", "/js/avis.js", ["disconnected"]),
     new Route("/contact", "contact", "/Pages/contact.html", "/js/contact.js", ["disconnected"]),
     new Route("/habitatid", "habitatid", "/Pages/habitatid.html", "/js/habitatid.js", ["disconnected"]),
+    new Route("/animal-rapport", "animal-rapport", "/Pages/animal-rapport.html", "/js/animal-rapport.js", ["disconnected"]),
 
     // Routes réservées aux administrateurs (seulement accessibles par les admins)
     new Route("/statistiques", "statistiques", "/Pages/statistiques.html", "/js/statistiques.js", ["admin"]),
