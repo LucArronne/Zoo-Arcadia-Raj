@@ -38,7 +38,8 @@ const displayAnimals = (animals) => {
     animals.forEach(animal => {
         const option = document.createElement('option');
         option.value = animal.id;
-        option.textContent = `${animal.name} (ID: ${animal.id})`;
+        option.textContent = `${animal.name} - ${animal.race.name} (ID: ${animal.id})`;
+      
         animalSelect.appendChild(option);
     });
 };

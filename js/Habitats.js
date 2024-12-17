@@ -116,7 +116,7 @@ fetchHabitats();
 
 
 
-// incrementer le nombre de consultation d'un animal 
+// Fonction pour incrémenter le nombre de consultation d'un animal et afficher ses détails
 function incrementAnimalConsultation(animalId) {
     const putOptions = {
         method: "PUT",
@@ -125,17 +125,64 @@ function incrementAnimalConsultation(animalId) {
         },
     };
 
+    // Incrémenter les vues de l'animal
     fetch(`${apiUrl}home/animals/${animalId}`, putOptions)
         .then(response => {
             if (!response.ok) {
                 throw new Error(`Erreur HTTP : ${response.status}`);
             }
             console.log(`Consultation de l'animal ${animalId} mise à jour avec succès.`);
-            // Optionnel : afficher un message ou rediriger l'utilisateur
+
+            // Après avoir incrémenté les vues, on récupère le rapport de l'animal
+            getAnimalLastRapport(animalId);
         })
         .catch(error => {
             console.error('Erreur lors de la mise à jour des consultations :', error);
         });
 }
+
+// Fonction pour récupérer le dernier rapport d'un animal
+function getAnimalLastRapport(id) {
+    fetch(`/animals/last-rapport/${id}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Erreur HTTP : ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Affichage des détails du rapport de l'animal
+            displayAnimalDetails(data);
+        })
+        .catch(error => {
+            console.error('Erreur lors de la récupération des détails de l\'animal :', error);
+            const detailsContainer = document.getElementById('animal-details');
+            if (detailsContainer) {
+                detailsContainer.innerHTML = `<p class="text-danger">Impossible de récupérer les détails. Veuillez réessayer plus tard.</p>`;
+            }
+        });
+}
+
+// Fonction pour afficher les détails du rapport de l'animal dans un modal
+function displayAnimalDetails(data) {
+    const modal = document.getElementById('animal-modal');
+    const modalTitle = document.getElementById('animal-name');
+    const modalBody = document.getElementById('animal-details-modal');
+
+    modalTitle.textContent = data.name;
+    modalBody.innerHTML = `
+        <p><strong>État :</strong> ${data.state}</p>
+        <p><strong>Nourriture :</strong> ${data.food}</p>
+        <p><strong>Quantité :</strong> ${data.quantity}</p>
+        <p><strong>Date :</strong> ${new Date(data.date).toLocaleString()}</p>
+        <p><strong>Détails :</strong> ${data.details}</p>
+        <p><strong>Vues :</strong> ${data.views}</p>
+    `;
+
+    // Afficher le modal
+    $(modal).modal('show');
+}
+
+
 
 
