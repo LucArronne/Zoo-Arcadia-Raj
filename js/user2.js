@@ -49,15 +49,13 @@ function showReview(review) {
     statusCell.classList.add(review.visible ? "text-success" : "text-danger");
 
     // Bouton d'action
-    if (!review.visible) {
-        let validateBtn = document.createElement('button');
-        validateBtn.classList.add('btn', 'btn-primary', 'btn-sm', 'me-2');
-        validateBtn.textContent = 'Valider';
-        validateBtn.onclick = function () {
-            validateReview(review.id, newRow, statusCell);
-        };
-        actionCell.appendChild(validateBtn);
-    }
+    let validateBtn = document.createElement('button');
+    validateBtn.classList.add('btn', 'btn-primary', 'btn-sm', 'me-2');
+    validateBtn.textContent = review.visible ? 'Invalider' : 'Valider';
+    validateBtn.onclick = function () {
+        validateReview(review.id, statusCell, validateBtn);
+    };
+    actionCell.appendChild(validateBtn);
 
     let deleteBtn = document.createElement('button');
     deleteBtn.classList.add('btn', 'btn-danger', 'btn-sm');
@@ -73,26 +71,27 @@ function showReview(review) {
 }
 
 // Fonction pour valider un commentaire
-async function validateReview(reviewId, row, statusCell) {
+async function validateReview(reviewId, statusCell, updateButton) {
     const requestOptions = {
         method: "PUT",
         headers: myHeaders,
-        body: JSON.stringify({ visible: true }),
         redirect: "follow"
     };
 
     fetch(`${apiUrl}comments/${reviewId}`, requestOptions)
-            .then((response) => {
+        .then((response) => {
             if (response.ok) {
-                statusCell.textContent = "Validé";
-                statusCell.classList.remove("text-danger");
-                statusCell.classList.add("text-success");
-
-                // Supprimer le bouton "Valider" après validation
-                row.querySelector('.btn-primary').remove();
+                return response.json();
             } else {
                 throw new Error(`HTTP Status: ${response.status}`);
             }
+        })
+        .then((review) => {
+            statusCell.textContent = review.visible ? "Validé" : "Non validé";
+            statusCell.className = '';
+            statusCell.classList.add(review.visible ? "text-success" : "text-danger");
+            updateButton.textContent = review.visible ? 'Invalider' : 'Valider';
+
         })
         .catch((error) => {
             alert("Erreur lors de la validation de l'avis, " + error.message);
