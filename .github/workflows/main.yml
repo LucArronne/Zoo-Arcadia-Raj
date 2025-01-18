@@ -19,7 +19,7 @@ jobs:
       - name: 📂 Install dependencies
         uses: actions/setup-node@v2
         with:
-          node-version: '18'
+          node-version: '14'
 
       - name: 📂 Install npm dependencies
         run: npm install
@@ -31,8 +31,6 @@ jobs:
           username: rajohnson
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps
-          passive: true
-          debug: true
           timeout: 60000 
           exclude: |
             **/.git*
