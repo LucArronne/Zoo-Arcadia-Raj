@@ -1,3 +1,5 @@
+name: 🚀 Deploy website on push or pull request on prod
+
 on:
   push:
     branches:
@@ -5,8 +7,6 @@ on:
   pull_request:
     branches:
       - prod
-
-name: 🚀 Deploy website on push or pull request on prod
 
 jobs:
   web-deploy:
@@ -31,7 +31,6 @@ jobs:
           username: rajohnson
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps
-          timeout: 200000 
           exclude: |
             **/.git*
             **/.git*/**
