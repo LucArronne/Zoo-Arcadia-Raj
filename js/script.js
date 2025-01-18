@@ -1,5 +1,5 @@
 const tokenCookieName = "accesstoken";
-const apiUrl = "https://localhost:8000/api/";
+const apiUrl = "https://zoo-api-b76772f1a36b.herokuapp.com/api/";
 
 // Fonction pour définir un token dans le cookie
 function setToken(token) {
