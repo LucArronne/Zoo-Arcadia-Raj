@@ -80,14 +80,21 @@ if (isConnected()) {
   const role = getRoleInToken(getToken());
   switch (role) {
     case "ROLE_ADMIN":
-      window.history.replaceState({}, "", "/gestionuser");
+      if (!["/gestionuser", "/statistiques","/compteRendu","/rapportEmployeAdmin"].includes(window.location.pathname)) {
+        window.history.replaceState({}, "", "/gestionuser");
+      }
       break;
     case "ROLE_EMPLOYE":
-      window.history.replaceState({}, "", "/user2");
+      if (!["/user2", "/alimentEmploye"].includes(window.location.pathname)) {
+        window.history.replaceState({}, "", "/alimentEmploye");
+      }
       break;
     case "ROLE_VETERNARY":
-      window.history.replaceState({}, "", "/veternaire");
+      if (window.location.pathname !== "/veterinaire") {
+        window.history.replaceState({}, "", "/veterinaire");
+      }
       break;
+    // Ajoutez des cas pour d'autres rôles ici
     default:
   }
 }

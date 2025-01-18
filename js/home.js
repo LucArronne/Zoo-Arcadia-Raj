@@ -24,7 +24,7 @@ fetch(apiUrl + "home/habitats", requestOptions)
 
         data.forEach(habitat => {
             // Vérifiez si une image est disponible
-            const imageUrl = habitat.images.length > 0 ? habitat.images[0].path : 'default-image.jpg';
+            const imageUrl = habitat.images.length > 0 ? habitat.images[0].path : '../assets/images/Orang-outan.jpg';
 
             const habitatCard = document.createElement('article');
             habitatCard.classList.add('habitat-card');
@@ -33,7 +33,7 @@ fetch(apiUrl + "home/habitats", requestOptions)
                 <img src="${imageUrl}" alt="Habitat de la ${habitat.name}">
                 <h3 class="overlay-text-container text-white">${habitat.name}</h3>
                 <p>${habitat.description}</p>
-                <a href="/habitat/${habitat.id}" class="btn btn-secondary">Voir les Détails</a>
+                <a href="/habitats" class="btn btn-secondary">Voir les Détails</a>
             `;
 
             habitatList.appendChild(habitatCard);
@@ -106,6 +106,7 @@ function loadServicesSequentially() {
                 <img src="${service.image}" alt="${service.name}">
                 <h3 class="overlay-text-container text-white">${service.name}</h3>
                 <p>${service.description}</p>
+                <a href="/service" class="btn btn-secondary">Voir les Détails</a>
             </article>
         `;
 
@@ -242,4 +243,7 @@ fetch(`${apiUrl}home/comments`, requestOptions)
                 console.error('Error:', error);
             });
     });
+    
+
+
     

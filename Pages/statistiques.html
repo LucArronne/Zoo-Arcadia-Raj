@@ -1,60 +1,16 @@
-<!DOCTYPE html>
-<html lang="fr">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Statistiques des Animaux</title>
-
 </head>
 
 <body>
     <div class="container mt-5">
-        <h2>Dashboard - Statistiques des Animaux</h2>
-
-        <div class="mb-4">
-            <label for="filterAnimal">Filtrer par Animal :</label>
-            <select class="form-control" id="filterAnimal">
-                <option value="all">Tous les Animaux</option>
-                <option value="lion">Lion</option>
-                <option value="Zebre">Zebre</option>
-                <option value="girafe">Girafe</option>
-                <option value="Jaguar">Jaguar</option>
-                <option value="Orang-outan">Orang-outan</option>
-                <option value="tigre">tigre</option>
-                <option value="lion">Loutre</option>
-                <option value="Pelican">Pelican</option>
-                <option value="Crocodile">Crocodile</option>
-                <!-- Ajouter d' animaux  -->
-            </select>
-        </div>
-
-        <table class="table table-bordered">
+        <h2 class="text-white text-center overlay-text-container">Dashboard - Statistiques des Animaux</h2>
+        <table id="visitStatisticsTable" class="table table-bordered table-sm">
             <thead>
                 <tr>
                     <th>Animal</th>
                     <th>Nombre de Consultations</th>
+                    <th>Actions</th> <!-- Colonne pour les boutons de suppression -->
                 </tr>
             </thead>
-            <tbody id="statisticsTable">
-                <tr>
-                    <td>Lion</td>
-                    <td>150</td>
-                </tr>
-                <tr>
-                    <td>Tigre</td>
-                    <td>120</td>
-                </tr>
-                <tr>
-                    <td>Ours</td>
-                    <td>90</td>
-                </tr>
-
-            </tbody>
+            <tbody> <!-- Les données seront insérées ici --> </tbody>
         </table>
     </div>
-
-
-</body>
-
-</html>

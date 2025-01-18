@@ -1,15 +1,64 @@
-<section>
-    <article>
-        <div class="container">
-            <div class="habitat-title text">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des Habitats et Animaux</title>
+    <!-- Assurez-vous que les styles sont déjà inclus dans votre projet -->
+</head>
 
+<body>
+    <section>
+        <div class="container">
+            <div class="habitat-title text-white">
                 <div class="overlay-text-container">
                     <h2 class="text-center text-white">Nos Habitats</h2>
+                    <p class="text-center text-white">
+                        Le Zoo Arcadia est composé de plusieurs habitats naturels pour accueillir des animaux de
+                        différentes espèces.
+                    </p>
                 </div>
-                <p class="overlay-text text-white text-center">Le Zoo Arcadia est composé de plusieurs habitats naturels
-                    pour accueillir des animaux de différentes espèces</p>
+
+                <!-- Grille d'habitats avec Bootstrap -->
+                <div class="habitat-list" id="habitat-list">
+                    <!-- Les habitats seront ajoutés ici dynamiquement -->
+                </div>
             </div>
         </div>
-        <div class="habitat-list" id="habitat-list"></div>
-    </article>
-</section>
+
+        <div class="container">
+            <div class="text-center text-white">
+                <div class="overlay-text-container text-white">
+                    <div class="text-white" id="habitat-details">
+                        <h2 id="habitat-name"></h2>
+                    </div>
+                    <p class="text-white" id="habitat-description"></p>
+                </div>
+
+                <div class="container">
+                    <!-- Liste des animaux dans une grille de 3 colonnes -->
+                    <div class="habitat-list" id="animal-list">
+                        <!-- Les animaux seront ajoutés ici dynamiquement -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal pour afficher les détails de l'animal -->
+        <div class="modal fade" id="animal-modal" tabindex="-1" aria-labelledby="animal-name" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="animal-name"></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="animal-details-modal">
+                        <!-- Les détails de l'animal seront affichés ici -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </section>
+
+</body>
