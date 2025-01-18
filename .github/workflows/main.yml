@@ -1,40 +1,39 @@
-on : 
-  
-  push :
-    branches :
+on:
+  push:
+    branches:
       - prod
-  
-  pull_request :
-    branches :
+  pull_request:
+    branches:
       - prod
 
-name: 🚀 Deploy website on push or pull requuest on prod
+name: 🚀 Deploy website on push or pull request on prod
 
 jobs:
   web-deploy:
     name: 🎉 Deploy
     runs-on: ubuntu-latest
     steps:
-    - name: 🚚 Get latest code
-      uses: actions/checkout@v3
-    - name: 📂 Install dependencies
-      uses: actions/setup-node@v2
-      with:
-        node-version: '14'
-        
-    - name: 📂 Install npm dependencies
-      run: npm install
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v3
 
-    - name: 📂 Sync files
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-      with:
-        server:  ftp://ftp-rajohnson.alwaysdata.net
-        username: rajohnson
-        password : Alwaysdata2025
-        exclude: |
-          **/.git*
-          **/.git*/**
-          **/node_modules/bootstrap/scss/**
-          **/node_modules/bootstrap/js/**
-          **/node_modules/bootstrap-icons/icons/**
-        server-dir: /www/
+      - name: 📂 Install dependencies
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+
+      - name: 📂 Install npm dependencies
+        run: npm install
+
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ftp-rajohnson.alwaysdata.net
+          username: rajohnson
+          password: ${{ secrets.FTP_PASSWORD }}
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/bootstrap/scss/**
+            **/node_modules/bootstrap/js/**
+            **/node_modules/bootstrap-icons/icons/**
+          server-dir: /www/
