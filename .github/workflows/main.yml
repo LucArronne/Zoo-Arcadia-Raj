@@ -31,6 +31,9 @@ jobs:
           username: rajohnson
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps
+          passive: true
+          debug: true
+          timeout: 60000 
           exclude: |
             **/.git*
             **/.git*/**
