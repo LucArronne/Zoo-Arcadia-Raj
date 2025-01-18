@@ -30,7 +30,7 @@ jobs:
       with:
         server:  ftp://ftp-rajohnson.alwaysdata.net
         username: rajohnson
-        password : ${{ secrets.ftp_password }}
+        password : Alwaysdata2025
         exclude: |
           **/.git*
           **/.git*/**
